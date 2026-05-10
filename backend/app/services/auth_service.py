@@ -5,6 +5,8 @@ from jose import jwt
 from sqlalchemy.orm import Session
 from app.config import settings
 from app.models.user import User, RefreshToken
+from app.models.preference import UserPreference
+from app.models.destination import TripType
 import hashlib
 import secrets
 
@@ -63,6 +65,12 @@ def register_user(db: Session, first_name: str, last_name: str, email: str, pass
     if existing:
         raise ValueError("Email already registered")
 
+    trip_scope = kwargs.pop("trip_scope", "Both")
+    trip_types = kwargs.pop("trip_types", []) or []
+    budget_tier = kwargs.pop("budget_tier", "Mid-range")
+    min_budget = kwargs.pop("min_budget", None)
+    max_budget = kwargs.pop("max_budget", None)
+
     user = User(
         first_name=first_name,
         last_name=last_name,
@@ -71,6 +79,22 @@ def register_user(db: Session, first_name: str, last_name: str, email: str, pass
         **{k: v for k, v in kwargs.items() if v is not None}
     )
     db.add(user)
+    db.flush()
+
+    if trip_scope or budget_tier or min_budget is not None or max_budget is not None or trip_types:
+        pref = UserPreference(
+            user_id=user.id,
+            trip_scope=trip_scope,
+            budget_tier=budget_tier,
+            min_budget=min_budget,
+            max_budget=max_budget,
+        )
+        db.add(pref)
+        for type_name in trip_types:
+            trip_type = db.query(TripType).filter(TripType.name == type_name).first()
+            if trip_type:
+                pref.trip_types.append(trip_type)
+
     db.commit()
     db.refresh(user)
     return user

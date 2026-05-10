@@ -26,7 +26,18 @@ def register(req: RegisterRequest, db: Session = Depends(get_db)):
     try:
         user = register_user(
             db, req.first_name, req.last_name, req.email, req.password,
-            phone=req.phone, city=req.city, country=req.country,
+            phone=req.phone,
+            city=req.city,
+            country=req.country,
+            profile_photo_url=req.profile_photo_url,
+            emergency_contact_name=req.emergency_contact_name,
+            emergency_contact_phone=req.emergency_contact_phone,
+            emergency_contact_relation=req.emergency_contact_relation,
+            trip_scope=req.trip_scope,
+            trip_types=req.trip_types,
+            budget_tier=req.budget_tier,
+            min_budget=req.min_budget,
+            max_budget=req.max_budget,
         )
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))

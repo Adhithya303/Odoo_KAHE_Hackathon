@@ -1,0 +1,804 @@
+trip_scope,trip_type,min_budget,max_budget,group_type,travel_month,recommended_destination
+Domestic,"Cultural,Beach,Relaxation",9602,29695,Solo,"October,November,March",Pondicherry
+Domestic,Cultural,6972,19075,"Couple,Family",March,Mathura Vrindavan
+Domestic,"Cultural,Nature,Adventure",8844,23720,"Friends,Couple",February,Hampi
+International,Adventure,153826,389463,"Couple,Friends","January,July",Iceland
+International,"Beach,Cultural,Adventure",59935,151142,Friends,"May,September",Morocco
+International,Cultural,167815,369271,"Couple,Solo",July,Norway
+International,Nature,40387,96920,Friends,"February,November",Cambodia
+Domestic,Adventure,10794,25049,Solo,"September,April,May",Chopta
+Domestic,Relaxation,9085,23399,Family,"September,December,February",Mysuru
+International,Cultural,78507,215216,"Couple,Friends",January,Dubai
+Domestic,"Cultural,Pilgrimage",9030,31019,Solo,"November,January",Varanasi
+International,"Luxury,Beach,Relaxation",85107,247800,"Friends,Couple","June,May",Mauritius
+Domestic,Cultural,15807,39977,Friends,January,Rann of Kutch
+International,"Relaxation,Beach,Cultural",109412,268432,Couple,"August,July",Zanzibar
+International,"Nature,Beach",148381,435834,"Friends,Couple",May,Seychelles
+International,"Luxury,Nature",70115,192264,"Couple,Friends","February,March,April",Singapore
+Domestic,"Adventure,Nature,Cultural",14675,36060,"Solo,Couple","April,May,October",Ziro Valley
+Domestic,"Nature,Relaxation",10225,29311,Couple,"October,June,April",Ooty
+Domestic,Cultural,7092,23760,Friends,November,Amritsar
+International,"Adventure,Nature",156576,397466,Friends,August,Iceland
+Domestic,"Adventure,Nature",11306,33656,"Couple,Friends",March,Shimla
+Domestic,"Cultural,Pilgrimage",9103,29135,Couple,October,Varanasi
+International,"Luxury,Beach,Relaxation",102338,299555,Couple,"November,December,March",Maldives
+International,"Adventure,Wildlife",128241,294908,"Solo,Couple","April,August",Peru
+Domestic,"Adventure,Luxury",17965,76888,Family,March,Rajasthan
+Domestic,Cultural,18847,56424,"Couple,Family",October,Kerala
+Domestic,"Wildlife,Nature,Adventure",14575,40433,Solo,"December,October",Sundarbans
+International,"Beach,Luxury,Cultural",110597,275888,Friends,June,Greece
+Domestic,"Nature,Adventure,Cultural",17765,50373,"Solo,Friends",September,Spiti Valley
+Domestic,Nature,25297,64745,Friends,July,Ladakh
+International,Adventure,19563,64470,Couple,"April,November,May",Nepal
+Domestic,Nature,21579,50978,Couple,March,Auli
+Domestic,"Relaxation,Nature",14437,41187,Couple,"February,September",Munnar
+Domestic,Adventure,15707,41819,"Solo,Couple","January,October,March",Meghalaya
+International,"Cultural,Adventure",87232,245660,"Solo,Family","December,January",Mexico
+Domestic,"Nature,Cultural,Relaxation",19428,57565,Couple,December,Kerala
+International,"Cultural,Adventure",37653,93319,"Couple,Friends","November,March",Cambodia
+International,"Luxury,Cultural,Nature",108109,272399,Solo,"November,October,April",Japan
+Domestic,Pilgrimage,10118,28181,"Couple,Friends",October,Rishikesh
+International,"Beach,Adventure",150663,376029,"Couple,Friends","February,January",Costa Rica
+Domestic,"Cultural,Pilgrimage",10704,29923,"Solo,Family",December,Varanasi
+International,Adventure,175390,504869,Solo,"March,April",Australia
+International,"Nature,Cultural,Adventure",53054,140385,Solo,"February,January,December",Philippines
+Domestic,"Nature,Adventure,Relaxation",11169,37452,"Friends,Couple","November,December,January",Shimla
+International,"Nature,Cultural",34033,90959,"Friends,Couple","November,December",Cambodia
+Domestic,Cultural,8874,23604,Friends,"October,January,February",Mysuru
+International,"Adventure,Nature",187310,418968,Solo,June,Iceland
+International,Beach,158385,386008,"Friends,Couple",April,Seychelles
+International,Luxury,101438,259169,Couple,November,Japan
+International,"Cultural,Beach,Luxury",107285,289520,"Couple,Friends","May,June",Greece
+International,"Wildlife,Adventure",150608,380115,"Couple,Family","July,August",Kenya
+International,"Luxury,Cultural",149096,361552,"Couple,Solo","October,May,June",Paris
+Domestic,"Adventure,Cultural,Nature",17025,48152,"Friends,Solo",July,Spiti Valley
+International,"Adventure,Cultural,Nature",201418,434831,Couple,"September,July",Canada
+Domestic,Adventure,21601,49943,Friends,"February,January",Auli
+International,"Cultural,Adventure",102361,254439,Solo,"February,December,November",Mexico
+International,"Luxury,Nature",96321,236322,"Couple,Friends","October,April",Japan
+Domestic,"Nature,Beach,Adventure",32941,78070,"Family,Couple","January,October,November",Andaman Islands
+Domestic,"Adventure,Beach,Relaxation",35927,81460,"Couple,Friends",April,Lakshadweep
+International,Adventure,76280,194293,Friends,October,Turkey
+International,"Cultural,Pilgrimage,Adventure",86144,188084,Couple,"January,October",Egypt
+International,"Cultural,Nature,Adventure,Wildlife",131749,304775,Couple,July,Peru
+Domestic,"Adventure,Nature",15325,40789,"Family,Friends","November,February,October",Coorg
+Domestic,"Nature,Adventure,Cultural",16294,42970,Family,November,Rann of Kutch
+International,Nature,200229,445663,Solo,"June,July,September",Canada
+Domestic,"Nature,Adventure",15760,42775,"Couple,Family","February,December,November",Rann of Kutch
+International,"Nature,Adventure",192271,428029,Friends,"December,January",Iceland
+Domestic,Cultural,19787,87549,"Family,Friends","February,January,October",Rajasthan
+Domestic,Nature,27700,67448,"Couple,Family","April,October",Andaman Islands
+Domestic,"Cultural,Luxury",13644,50734,Couple,October,Jaipur
+International,"Beach,Adventure,Cultural",62366,148457,Friends,"September,April",Morocco
+International,"Cultural,Nature",183251,400665,Solo,November,Norway
+Domestic,"Nature,Cultural,Adventure",17210,51374,"Friends,Solo",August,Spiti Valley
+International,"Cultural,Relaxation,Beach",92276,263661,Friends,"October,August",Zanzibar
+Domestic,Nature,20855,63226,"Family,Couple",November,Kerala
+Domestic,"Cultural,Relaxation,Nature",17577,54647,"Solo,Couple",November,Kerala
+International,"Adventure,Nature,Cultural",36664,90414,"Solo,Couple",February,Cambodia
+International,"Nature,Wildlife,Adventure",168331,401293,Friends,"October,August,September",Tanzania
+Domestic,Pilgrimage,10233,27216,"Friends,Solo",October,Chopta
+International,"Beach,Cultural,Nature",58128,147402,"Solo,Friends","May,June",Indonesia
+Domestic,"Relaxation,Cultural",9616,25755,Friends,"March,September,January",Mysuru
+International,"Cultural,Luxury,Nature",61306,186938,"Couple,Family",April,Singapore
+International,"Relaxation,Luxury",153776,352391,"Couple,Solo","May,September",Paris
+Domestic,"Pilgrimage,Cultural",9935,30281,"Couple,Family","January,October,February",Varanasi
+Domestic,"Nature,Cultural",26622,58744,"Solo,Couple","August,September",Ladakh
+International,"Pilgrimage,Adventure",93682,196841,"Couple,Solo","November,September",Jordan
+International,"Wildlife,Nature,Adventure",152690,353867,"Friends,Couple","October,June,September",Kenya
+International,"Cultural,Beach,Nature",115939,280673,Couple,"September,June,April",Italy
+Domestic,"Nature,Wildlife",18603,58391,"Friends,Solo","March,December,January",Kaziranga
+International,"Cultural,Nature",219065,520871,"Friends,Solo","March,April,May",Australia
+International,"Relaxation,Cultural,Adventure,Beach",44156,119868,"Family,Solo",November,Thailand
+International,Relaxation,62707,155503,Friends,"August,July,May",Bali
+Domestic,Beach,34387,90506,"Friends,Couple","February,March,January",Lakshadweep
+Domestic,"Nature,Adventure,Pilgrimage",10363,24755,"Solo,Friends","May,June",Chopta
+International,"Beach,Luxury",95242,233324,"Family,Solo","September,June,April",Spain
+International,"Nature,Beach",110978,273208,Couple,May,Italy
+International,"Nature,Luxury,Cultural",88633,248767,Solo,November,Japan
+Domestic,"Nature,Adventure,Wildlife",13001,35780,Family,"February,December,November",Sundarbans
+International,"Cultural,Nature",126746,320133,Couple,September,Peru
+Domestic,"Cultural,Relaxation",8829,23886,"Family,Couple",December,Mysuru
+International,"Beach,Luxury",89892,228026,Couple,"August,May,June",Mauritius
+Domestic,Pilgrimage,10856,30349,"Couple,Solo","September,November,February",Rishikesh
+International,"Nature,Adventure,Wildlife",166408,404935,Family,September,Tanzania
+International,"Adventure,Beach",212201,512522,Couple,October,Australia
+International,"Cultural,Beach,Relaxation,Luxury",104243,236501,"Couple,Solo","April,October",Spain
+International,Adventure,78266,192597,"Friends,Solo","January,October,February",Egypt
+Domestic,Beach,26092,70800,"Family,Couple",November,Andaman Islands
+International,Nature,74367,190736,Couple,"February,August,July",Singapore
+Domestic,Pilgrimage,8934,27309,"Couple,Family",November,Varanasi
+International,"Nature,Adventure",191557,432237,"Couple,Friends",March,New Zealand
+Domestic,"Adventure,Pilgrimage",10322,27379,"Friends,Solo",May,Chopta
+International,"Beach,Cultural,Relaxation,Adventure",92934,237578,"Couple,Solo",March,Mexico
+Domestic,Relaxation,10364,26032,"Friends,Family","November,September",Mysuru
+International,Beach,92455,286996,"Friends,Couple",November,Maldives
+International,"Cultural,Luxury",65867,165158,Couple,"August,February,March",Singapore
+International,Adventure,38427,98083,"Solo,Friends","September,April,August",Vietnam
+Domestic,"Cultural,Adventure",25141,61002,"Friends,Solo",August,Ladakh
+Domestic,"Relaxation,Cultural,Beach",15979,48816,"Friends,Solo","February,November,March",Goa
+Domestic,"Cultural,Adventure,Nature",13555,32490,"Couple,Friends",May,Ziro Valley
+Domestic,"Nature,Relaxation",8651,28030,Friends,"November,June",Ooty
+International,"Nature,Adventure",164242,369669,"Family,Couple","September,July",Kenya
+International,"Luxury,Nature,Cultural,Beach",142100,307089,Friends,May,Italy
+Domestic,Relaxation,8579,23612,"Friends,Family","September,March,December",Mysuru
+International,"Relaxation,Luxury,Cultural",129751,350441,"Solo,Couple","April,May",Paris
+International,Luxury,141740,389152,"Friends,Family",July,Switzerland
+International,Pilgrimage,80972,187215,Family,January,Egypt
+Domestic,"Nature,Adventure,Relaxation",13855,39514,"Friends,Family","January,February",Coorg
+International,"Wildlife,Adventure,Cultural,Beach",191902,511293,Family,"September,March,November",Australia
+International,"Cultural,Adventure,Beach",80113,193734,Family,"May,September",Turkey
+Domestic,"Relaxation,Cultural",21980,58712,Couple,"January,February",Kerala
+Domestic,"Nature,Adventure",16281,44893,Couple,February,Meghalaya
+Domestic,Adventure,13443,41477,"Solo,Couple","December,October,January",Meghalaya
+International,Cultural,68954,160867,"Friends,Couple","December,February",Egypt
+International,"Nature,Cultural",49500,129627,"Couple,Family",December,Malaysia
+Domestic,"Cultural,Adventure,Nature",22384,59005,Solo,"September,July",Ladakh
+International,"Nature,Adventure",36292,102816,Solo,"March,April,February",Vietnam
+International,Cultural,94239,240098,"Friends,Family","November,April",Mexico
+International,"Adventure,Cultural,Wildlife,Beach",129656,287031,Couple,"September,June,October",South Africa
+International,"Nature,Adventure,Beach,Cultural",62017,164008,Friends,August,Indonesia
+International,Cultural,38716,101719,"Friends,Family",January,Sri Lanka
+International,Adventure,74278,182380,Family,"March,December",Egypt
+International,Cultural,107149,263773,Family,May,Spain
+Domestic,Relaxation,10319,24654,Family,"December,January,October",Mysuru
+Domestic,"Cultural,Nature,Adventure",20349,51331,Solo,June,Spiti Valley
+Domestic,"Pilgrimage,Cultural",8645,22291,Family,"March,February",Mathura Vrindavan
+International,Beach,68980,189488,Friends,"September,May,April",Turkey
+Domestic,Adventure,16460,42959,Friends,"January,December",Manali
+International,"Nature,Adventure",139399,345920,"Solo,Couple",December,Costa Rica
+Domestic,"Nature,Relaxation",10017,29778,"Family,Friends","October,June,April",Ooty
+International,"Adventure,Wildlife",175723,411334,"Family,Couple",August,Canada
+Domestic,"Nature,Adventure,Wildlife",21643,60787,Couple,"November,December",Jim Corbett
+International,"Nature,Cultural,Adventure",153321,405455,"Couple,Friends","December,July",Norway
+Domestic,"Nature,Adventure,Wildlife",14788,42230,"Solo,Family","December,January,February",Sundarbans
+Domestic,Nature,15368,39994,Solo,"December,October,January",Manali
+International,"Relaxation,Cultural",109410,231322,Solo,"October,April",Portugal
+International,Nature,47428,115995,Family,"December,July",Malaysia
+International,"Luxury,Relaxation",58058,158551,"Friends,Solo","June,July,April",Bali
+International,Cultural,63012,149046,Solo,August,Bali
+International,"Pilgrimage,Adventure,Nature",21336,59041,Solo,"November,October",Nepal
+International,Adventure,108539,277270,Solo,"January,February",Mexico
+International,"Nature,Wildlife",133349,349773,"Family,Couple",August,Kenya
+International,"Nature,Adventure,Pilgrimage",20305,60451,Solo,"November,March",Nepal
+International,"Cultural,Pilgrimage,Adventure",84156,180687,Friends,"April,October,November",Bhutan
+International,Nature,39779,95546,"Couple,Family",December,Sri Lanka
+International,"Adventure,Nature,Cultural,Beach",55621,146646,"Couple,Friends","February,April",Philippines
+Domestic,"Cultural,Adventure",13339,36471,Solo,"November,February,January",Meghalaya
+International,Cultural,58192,146202,"Friends,Solo",December,Philippines
+Domestic,Adventure,22027,59552,Solo,"August,July",Ladakh
+Domestic,Luxury,16385,53227,Couple,"March,November",Jaipur
+International,Relaxation,51496,133633,Couple,May,Bali
+International,"Luxury,Beach",60816,146816,"Couple,Friends","August,May,June",Bali
+International,"Pilgrimage,Adventure",20236,60344,"Couple,Friends","April,November",Nepal
+International,"Luxury,Nature",70341,194094,Friends,"March,February,August",Singapore
+International,"Pilgrimage,Nature,Adventure",21388,62702,Solo,"November,March",Nepal
+International,"Wildlife,Nature,Adventure",159062,406488,Friends,"February,January,March",New Zealand
+Domestic,Cultural,14475,35923,Family,October,Darjeeling
+International,Adventure,144025,372983,Family,"December,June",Switzerland
+International,Relaxation,100438,243701,Friends,July,Mauritius
+International,"Nature,Luxury",125477,311244,Friends,May,Italy
+Domestic,"Pilgrimage,Adventure",9472,30816,"Solo,Friends","September,February",Rishikesh
+International,"Nature,Cultural,Luxury",64126,169561,"Family,Friends","March,February",Singapore
+International,"Wildlife,Nature,Cultural",119305,291447,Friends,September,Peru
+International,"Nature,Adventure,Wildlife",219288,467896,"Couple,Family","September,December,June",Canada
+International,Beach,105093,279740,"Couple,Family","October,May",Greece
+International,"Adventure,Relaxation",48704,115338,"Solo,Friends",March,Thailand
+International,"Pilgrimage,Adventure",68239,160681,Couple,"March,November,October",Bhutan
+Domestic,"Cultural,Pilgrimage",8362,19968,Solo,January,Mathura Vrindavan
+International,"Cultural,Adventure",75464,169187,Friends,"September,March,April",Morocco
+Domestic,Adventure,10417,29255,"Couple,Solo","March,September,April",Rishikesh
+International,"Adventure,Pilgrimage,Cultural",80260,192849,Solo,"March,May",Bhutan
+International,Adventure,43126,120356,Family,"January,February",Thailand
+International,Adventure,95190,212327,Solo,September,Jordan
+International,"Luxury,Nature,Adventure",145572,412053,"Friends,Couple","August,January",Switzerland
+International,Wildlife,35065,95456,Friends,"March,February",Sri Lanka
+International,Adventure,74023,165186,"Couple,Solo","October,April,September",Morocco
+International,Nature,55795,156557,Solo,January,Philippines
+International,"Wildlife,Cultural,Nature",39495,104387,"Friends,Family","December,April,March",Sri Lanka
+Domestic,"Nature,Adventure,Cultural",21134,51998,"Friends,Solo",September,Spiti Valley
+International,"Beach,Adventure",70138,169685,"Friends,Solo","September,March",Morocco
+Domestic,"Nature,Adventure,Beach",31221,70993,"Family,Friends","December,February",Andaman Islands
+Domestic,"Nature,Wildlife",17694,51828,Solo,"December,February,April",Kaziranga
+Domestic,"Cultural,Relaxation,Beach",9104,27716,Friends,"February,October,December",Pondicherry
+International,"Cultural,Beach",69646,180524,"Family,Couple","December,January,February",Dubai
+International,"Relaxation,Beach",99406,287327,Friends,"December,April",Maldives
+International,"Luxury,Nature",102165,271709,"Couple,Solo",October,Japan
+Domestic,"Cultural,Nature",10368,25207,"Friends,Solo","January,December,February",Hampi
+Domestic,"Cultural,Pilgrimage",9177,28434,"Solo,Couple","March,January",Varanasi
+Domestic,"Nature,Adventure,Cultural",13202,32993,Friends,"May,September",Ziro Valley
+Domestic,"Nature,Relaxation",14239,35949,"Solo,Couple","October,May,March",Darjeeling
+Domestic,"Adventure,Luxury",20386,87928,Family,"March,January",Rajasthan
+Domestic,Pilgrimage,10346,29728,"Family,Couple",November,Varanasi
+Domestic,"Wildlife,Nature,Adventure",13895,37539,Family,October,Sundarbans
+International,"Luxury,Relaxation,Cultural",55532,148246,"Friends,Solo",July,Bali
+International,"Cultural,Nature",61850,181006,"Family,Friends","July,April,March",Singapore
+International,"Pilgrimage,Cultural,Adventure",93235,207281,Friends,"May,March",Jordan
+Domestic,"Relaxation,Cultural",14664,33234,Family,March,Darjeeling
+Domestic,"Nature,Adventure,Cultural",23311,60880,"Friends,Couple","June,September",Ladakh
+Domestic,"Adventure,Nature,Cultural",10317,27235,"Solo,Friends","January,October",Hampi
+Domestic,"Adventure,Cultural,Nature",9303,23103,Friends,"November,February,December",Hampi
+Domestic,"Cultural,Relaxation",18978,61694,"Couple,Family",November,Kerala
+International,"Cultural,Nature",43756,99058,Couple,December,Sri Lanka
+Domestic,"Relaxation,Beach",9796,30600,"Solo,Friends","March,October,November",Pondicherry
+Domestic,Wildlife,18583,55648,"Family,Friends","January,April,February",Jim Corbett
+International,"Nature,Adventure",195710,406117,"Solo,Couple","June,December",Iceland
+Domestic,"Nature,Pilgrimage,Adventure",9992,23601,"Friends,Solo",June,Chopta
+Domestic,"Nature,Cultural,Relaxation",13709,32576,Couple,April,Darjeeling
+International,Cultural,63205,187109,"Friends,Family","March,April",Singapore
+International,"Nature,Wildlife",35380,102337,"Couple,Friends","February,March,April",Sri Lanka
+Domestic,"Nature,Relaxation,Adventure",12015,35597,Couple,"December,April,May",Shimla
+International,Beach,91388,229749,Family,December,Mexico
+Domestic,Nature,14082,40770,"Solo,Couple",December,Manali
+International,Adventure,166650,405658,"Solo,Friends","November,January",Iceland
+International,Cultural,39083,104874,"Friends,Family",January,Sri Lanka
+Domestic,Pilgrimage,7530,20378,"Solo,Family","December,November",Mathura Vrindavan
+Domestic,"Cultural,Pilgrimage",9501,27871,Solo,"October,March",Varanasi
+International,"Nature,Luxury,Relaxation,Beach",147311,398686,"Friends,Couple","November,April,October",Seychelles
+Domestic,"Adventure,Nature",14054,41838,"Solo,Family","December,January,September",Sundarbans
+Domestic,"Nature,Relaxation,Adventure",11285,34069,"Family,Friends","December,October,November",Shimla
+International,"Adventure,Cultural",37926,90994,"Solo,Friends",March,Cambodia
+Domestic,Nature,15773,43959,"Family,Couple",February,Rann of Kutch
+Domestic,Relaxation,10064,25166,"Couple,Family","January,February,October",Mysuru
+Domestic,"Adventure,Nature",17039,45544,"Couple,Solo",March,Auli
+International,Adventure,141125,369517,"Friends,Couple","August,June,February",Switzerland
+Domestic,"Nature,Cultural",15410,35498,Family,"September,October,November",Darjeeling
+International,"Luxury,Beach,Relaxation,Cultural",103727,239812,"Friends,Solo",September,Spain
+International,"Adventure,Nature,Beach",54830,124903,Couple,July,Malaysia
+International,"Cultural,Adventure",34393,84195,"Couple,Solo",March,Cambodia
+International,Wildlife,155697,374210,"Friends,Couple","September,June,August",Tanzania
+International,"Relaxation,Luxury,Beach",143648,407245,Couple,October,Seychelles
+Domestic,Luxury,19181,87944,"Family,Friends","January,December,February",Rajasthan
+International,"Nature,Adventure,Beach",61703,159974,Friends,August,Indonesia
+Domestic,"Nature,Relaxation",9634,30986,Friends,October,Ooty
+International,Wildlife,114210,292496,Couple,April,Peru
+Domestic,"Nature,Adventure",10157,28576,"Solo,Couple","October,November",Rishikesh
+Domestic,"Wildlife,Adventure,Nature",13664,37254,Solo,February,Sundarbans
+Domestic,"Pilgrimage,Cultural",7520,23170,"Family,Solo",November,Tirupati
+International,"Beach,Luxury,Cultural",69464,182803,Couple,"January,November,February",Dubai
+Domestic,"Nature,Cultural",19115,64688,"Couple,Family","December,November",Kerala
+Domestic,Pilgrimage,8346,26846,"Solo,Couple",September,Tirupati
+International,"Relaxation,Cultural,Luxury",56587,150952,"Solo,Friends","April,September,May",Bali
+International,"Beach,Cultural,Relaxation,Luxury",65825,161238,"Solo,Couple","April,June",Bali
+Domestic,"Pilgrimage,Adventure,Nature",10066,29438,"Friends,Solo","April,October,September",Rishikesh
+Domestic,"Nature,Cultural,Adventure",13729,36883,Friends,"October,December",Meghalaya
+International,"Nature,Luxury",132418,375755,"Couple,Friends","October,November,May",Seychelles
+International,"Relaxation,Beach,Cultural,Adventure",102680,259129,Solo,"January,November,December",Mexico
+International,"Wildlife,Cultural",205786,461251,Solo,"July,August",Canada
+Domestic,Nature,13109,38064,"Couple,Solo","December,March,November",Meghalaya
+Domestic,Pilgrimage,7680,26050,Couple,"January,October,February",Tirupati
+Domestic,"Cultural,Beach,Relaxation",16145,55166,Friends,"November,December,March",Goa
+International,"Pilgrimage,Cultural,Nature,Adventure",86354,192289,"Couple,Friends","May,March,October",Bhutan
+International,"Nature,Luxury,Beach,Relaxation",140019,371435,Couple,"November,April",Seychelles
+Domestic,"Cultural,Nature",22827,55341,Friends,August,Ladakh
+Domestic,"Nature,Adventure,Pilgrimage",9491,31066,"Solo,Couple","October,September",Rishikesh
+International,"Adventure,Nature,Cultural,Pilgrimage",73287,183775,Solo,"May,March,November",Bhutan
+Domestic,"Cultural,Pilgrimage",7873,20521,"Couple,Solo",January,Mathura Vrindavan
+International,Beach,34377,94141,"Family,Couple",April,Sri Lanka
+Domestic,"Beach,Relaxation",9545,32358,Couple,"January,February",Pondicherry
+Domestic,"Adventure,Nature,Cultural",16134,36351,Solo,April,Ziro Valley
+International,"Adventure,Beach",129074,295077,"Couple,Friends","July,September,October",South Africa
+Domestic,"Cultural,Adventure,Nature",13096,40124,"Friends,Couple","November,December,January",Rann of Kutch
+International,"Nature,Luxury,Cultural",70943,174030,Friends,"August,July",Singapore
+International,"Nature,Beach",51730,139292,Couple,"March,February",Philippines
+International,"Beach,Cultural",90055,201871,"Couple,Friends","May,June,October",Portugal
+Domestic,Cultural,12792,36602,Couple,"March,December,January",Meghalaya
+International,"Nature,Wildlife,Cultural",39521,101884,"Friends,Couple","March,January,April",Sri Lanka
+International,Nature,183745,423860,Couple,"February,December,January",New Zealand
+Domestic,Relaxation,13486,41963,Family,"November,September,March",Munnar
+International,"Cultural,Luxury",74155,197355,Friends,"September,April",Turkey
+International,Luxury,71074,188752,"Family,Couple","December,November",Dubai
+Domestic,Adventure,9740,25105,"Friends,Couple","December,November",Hampi
+Domestic,"Wildlife,Nature",19421,51594,Friends,"February,January",Kaziranga
+International,"Beach,Adventure,Nature",141881,343045,"Couple,Family","March,January,February",Costa Rica
+International,"Adventure,Pilgrimage",84366,188968,Friends,March,Jordan
+Domestic,Pilgrimage,8796,30618,Couple,"October,November",Varanasi
+International,"Beach,Luxury,Cultural,Adventure",76541,209974,Friends,"April,May,September",Turkey
+International,"Adventure,Nature,Cultural",179467,418495,"Couple,Solo","December,July,June",Norway
+Domestic,"Relaxation,Nature",10907,29610,"Couple,Friends","June,April,May",Ooty
+Domestic,Adventure,15712,39699,Couple,November,Coorg
+Domestic,"Cultural,Adventure,Nature",13250,35349,Couple,October,Ziro Valley
+Domestic,"Adventure,Beach",32056,72459,"Couple,Family","February,December,October",Andaman Islands
+International,"Cultural,Luxury",80604,201594,Couple,"February,March",Dubai
+Domestic,Adventure,30945,75319,"Friends,Family",December,Andaman Islands
+International,"Nature,Pilgrimage",17828,54598,Couple,October,Nepal
+International,"Nature,Relaxation,Luxury,Beach",145608,381438,Couple,"April,October",Seychelles
+International,"Adventure,Nature",185293,411747,Couple,June,Tanzania
+International,"Cultural,Beach,Nature,Adventure",63943,146201,Couple,"July,June",Indonesia
+International,"Beach,Wildlife,Adventure,Cultural",129852,307135,Family,September,South Africa
+International,Wildlife,176544,378211,"Solo,Couple","January,November,February",New Zealand
+Domestic,Cultural,14734,54730,"Solo,Friends","February,March",Goa
+International,"Cultural,Adventure,Beach",73039,160472,Friends,"September,May",Morocco
+Domestic,"Luxury,Cultural,Adventure",19535,83538,"Family,Couple","December,October,March",Rajasthan
+Domestic,Adventure,19180,80978,Couple,March,Rajasthan
+Domestic,"Nature,Adventure,Cultural",9415,24350,Solo,March,Hampi
+International,"Adventure,Beach,Nature",161558,391394,Solo,March,Costa Rica
+International,"Nature,Cultural,Adventure,Wildlife",118206,288741,Friends,"May,April",Peru
+International,Cultural,81454,181783,Solo,"April,October",Czech Republic
+Domestic,"Nature,Relaxation",15191,42484,Couple,"March,January,November",Munnar
+International,"Adventure,Beach,Cultural",68577,158478,Friends,"March,April",Morocco
+International,Beach,70965,198563,"Friends,Couple",May,Turkey
+Domestic,"Nature,Relaxation",15220,42223,Couple,"January,October,February",Munnar
+International,"Beach,Nature,Adventure,Cultural",62470,154563,Couple,"January,December,March",Philippines
+International,"Beach,Cultural",104780,245110,"Family,Couple","February,November",Mexico
+Domestic,"Adventure,Wildlife,Nature",14043,36696,"Family,Solo","January,February,October",Sundarbans
+International,"Luxury,Cultural",58609,158630,Solo,"September,July,June",Bali
+International,"Cultural,Relaxation,Luxury",130661,357240,Couple,"October,May",Paris
+Domestic,"Beach,Cultural",15494,54134,Solo,November,Goa
+Domestic,Adventure,15928,42201,"Friends,Couple","October,December",Manali
+Domestic,"Adventure,Nature,Cultural",15839,42245,"Friends,Solo",December,Meghalaya
+Domestic,"Adventure,Nature,Wildlife",13582,40749,"Friends,Solo",November,Sundarbans
+International,"Beach,Adventure",124027,296970,Couple,"October,July",South Africa
+International,"Cultural,Adventure,Beach",61497,152608,"Friends,Solo","November,March,October",Morocco
+International,Adventure,63085,165918,"Solo,Couple","February,January",Philippines
+International,"Nature,Cultural,Luxury,Beach",131574,307181,"Friends,Couple","October,June,May",Italy
+International,"Beach,Nature,Adventure",52353,151863,"Couple,Friends","June,September",Indonesia
+International,Relaxation,101191,211912,"Couple,Solo","June,May",Portugal
+Domestic,"Relaxation,Adventure,Beach",35496,87578,Friends,January,Lakshadweep
+Domestic,Nature,8869,25011,Friends,April,Chopta
+International,"Nature,Cultural,Adventure",174310,425044,"Couple,Friends","July,June",Norway
+Domestic,Cultural,13273,51291,"Couple,Solo",January,Goa
+Domestic,"Wildlife,Nature",18523,58325,Friends,December,Kaziranga
+Domestic,Relaxation,19215,63828,Family,"October,September",Kerala
+Domestic,"Cultural,Relaxation",9249,23438,"Friends,Couple","December,March,October",Mysuru
+International,"Cultural,Adventure,Beach",74610,192748,"Family,Couple",May,Turkey
+International,"Beach,Nature,Adventure",55639,158204,Solo,"May,June,July",Indonesia
+International,Cultural,165506,386609,"Friends,Solo","June,July,December",Norway
+International,"Cultural,Adventure,Nature",36690,104896,"Friends,Couple",September,Vietnam
+Domestic,Nature,16390,42575,Friends,"December,February,January",Meghalaya
+International,"Nature,Beach",55110,137912,Couple,"June,July,April",Indonesia
+Domestic,"Nature,Cultural",18653,51136,"Solo,Friends","July,June",Spiti Valley
+Domestic,Nature,20514,57340,"Friends,Couple",November,Jim Corbett
+Domestic,"Adventure,Beach,Nature",31361,70011,"Family,Couple",January,Andaman Islands
+International,"Adventure,Pilgrimage",81231,175719,Family,March,Egypt
+International,"Beach,Relaxation",88434,278448,"Friends,Couple",December,Maldives
+International,"Nature,Cultural,Adventure",87807,198029,"Solo,Couple","April,March,May",Bhutan
+Domestic,Cultural,7566,25971,Solo,February,Tirupati
+Domestic,Beach,9958,28201,"Solo,Friends",November,Pondicherry
+International,Adventure,63402,159813,Friends,"January,February,April",Philippines
+International,"Beach,Cultural,Luxury",77952,200911,Couple,"September,April,May",Turkey
+Domestic,Luxury,15717,48420,Family,"October,December",Jaipur
+Domestic,Cultural,10024,31724,"Solo,Couple","January,December,October",Varanasi
+International,Luxury,137530,371978,"Friends,Couple","April,October",Seychelles
+International,Adventure,107793,278068,Family,"July,September,June",South Africa
+Domestic,Cultural,7963,26955,"Couple,Solo","September,March",Tirupati
+Domestic,Cultural,9053,30511,"Solo,Family",December,Varanasi
+International,"Adventure,Nature",135445,342766,Friends,October,Kenya
+Domestic,"Cultural,Relaxation",8613,27298,Couple,"February,January,October",Pondicherry
+Domestic,Cultural,7699,24480,Friends,"November,December,October",Amritsar
+Domestic,"Cultural,Adventure",15201,43064,"Couple,Friends","December,February,November",Rann of Kutch
+Domestic,Adventure,29311,74104,Friends,February,Andaman Islands
+International,"Adventure,Nature,Beach",53257,149676,Couple,"May,September",Indonesia
+Domestic,Relaxation,13025,36029,"Family,Couple","February,December",Coorg
+Domestic,"Cultural,Nature",13282,34447,Couple,"November,September,March",Darjeeling
+International,"Cultural,Adventure,Nature",190995,411373,Friends,"June,August,July",Norway
+Domestic,"Pilgrimage,Cultural",7571,19094,"Solo,Family",November,Mathura Vrindavan
+Domestic,"Adventure,Nature",18057,62738,Couple,February,Jim Corbett
+Domestic,Nature,15287,43363,Friends,October,Manali
+International,"Adventure,Nature,Cultural",168282,417849,"Friends,Solo","December,June",Norway
+International,"Luxury,Cultural,Relaxation",134122,339101,"Couple,Friends","May,September,April",Paris
+International,"Nature,Beach,Wildlife",135583,356787,"Couple,Family",April,Costa Rica
+International,Adventure,191246,411338,"Couple,Solo","June,December,July",Norway
+Domestic,Cultural,8449,25851,"Family,Solo",September,Tirupati
+International,"Relaxation,Beach",87023,221448,"Friends,Solo","October,May,June",Portugal
+Domestic,"Adventure,Nature",14467,42992,"Friends,Couple","September,January,November",Coorg
+Domestic,"Cultural,Adventure",12810,38768,"Couple,Friends","December,January,November",Rann of Kutch
+International,Beach,126511,306001,"Friends,Family","May,October,September",Greece
+International,Luxury,83990,218630,"Friends,Couple",September,Turkey
+International,"Cultural,Relaxation",90485,225623,Couple,"June,September",Zanzibar
+Domestic,Cultural,8725,27364,"Solo,Friends","March,October,November",Amritsar
+Domestic,Nature,10454,25300,Solo,"October,April,May",Chopta
+International,"Nature,Cultural",203333,544593,"Couple,Solo","May,September",Australia
+Domestic,"Nature,Relaxation,Adventure",12186,33627,Couple,"December,January",Shimla
+International,Adventure,87211,197166,"Friends,Couple","May,October,April",Bhutan
+International,"Wildlife,Cultural,Nature,Adventure",210572,477283,Friends,"September,December",Canada
+International,"Cultural,Adventure,Pilgrimage",71434,173361,Solo,October,Egypt
+International,"Pilgrimage,Nature,Adventure,Cultural",83463,192190,Couple,"November,October,April",Bhutan
+International,"Relaxation,Luxury,Beach",89122,314466,Friends,"January,December",Maldives
+Domestic,"Pilgrimage,Cultural",7631,26500,"Friends,Solo","March,January",Amritsar
+International,"Beach,Adventure",51018,119558,"Friends,Couple",April,Malaysia
+Domestic,Adventure,13728,33303,Friends,"April,October,September",Ziro Valley
+Domestic,Cultural,13341,34771,"Friends,Couple",March,Ziro Valley
+International,"Nature,Adventure",161476,367815,Couple,"June,September,August",Kenya
+Domestic,"Adventure,Luxury",18418,82375,"Friends,Family","January,November,October",Rajasthan
+Domestic,"Relaxation,Adventure",41409,95902,Couple,"November,January",Lakshadweep
+International,Luxury,99848,282246,Friends,"January,March,November",Maldives
+International,Adventure,194270,409732,"Friends,Solo","July,December",Iceland
+Domestic,Nature,13448,40056,"Family,Friends","February,October",Sundarbans
+Domestic,"Nature,Adventure,Cultural",19802,53810,"Solo,Friends","September,July",Spiti Valley
+International,Relaxation,103364,274086,Friends,"July,October,September",Zanzibar
+International,"Wildlife,Adventure,Cultural,Nature",187443,458821,Family,August,Canada
+Domestic,"Nature,Relaxation",8613,26799,"Friends,Couple","October,April,November",Ooty
+Domestic,"Adventure,Nature",10598,31704,Solo,March,Rishikesh
+International,Adventure,117379,298167,"Friends,Solo","April,July,September",Peru
+International,Adventure,20246,61466,"Couple,Solo","November,March,May",Nepal
+Domestic,"Relaxation,Nature",9929,30803,"Couple,Family",October,Ooty
+International,"Luxury,Cultural,Nature",115806,300133,Family,"September,October,April",Italy
+International,"Pilgrimage,Cultural",73369,178377,"Friends,Solo","January,March",Egypt
+International,Nature,75596,183236,"Couple,Friends","October,April",Bhutan
+International,Beach,96622,239369,Family,October,Spain
+Domestic,"Nature,Relaxation",15777,40815,"Family,Couple",March,Munnar
+Domestic,Adventure,18881,51416,"Solo,Friends","December,February",Auli
+International,"Nature,Luxury",126139,291838,"Family,Couple","April,October,May",Italy
+International,Luxury,120237,305786,"Family,Friends","April,September,May",Italy
+International,Relaxation,76134,168231,Couple,"May,June,September",Czech Republic
+Domestic,"Cultural,Luxury",16441,51980,"Couple,Family","March,February",Jaipur
+Domestic,Relaxation,13426,40317,Friends,"February,November,September",Coorg
+International,"Beach,Relaxation",96210,267789,Friends,"May,June",Mauritius
+International,Beach,99613,253855,Couple,August,Zanzibar
+Domestic,"Cultural,Relaxation",8834,28156,"Solo,Couple",January,Pondicherry
+International,"Beach,Luxury",69862,186840,"Friends,Couple","September,April",Turkey
+Domestic,Adventure,21750,89121,Couple,"February,March,December",Rajasthan
+International,"Cultural,Adventure",62598,165078,"Solo,Couple",March,Morocco
+International,Nature,155790,397921,Friends,"June,July",Norway
+International,"Cultural,Beach",109504,218705,Solo,September,Portugal
+Domestic,"Adventure,Pilgrimage,Nature",9295,25562,"Solo,Friends",October,Chopta
+International,"Cultural,Luxury",55276,144973,"Friends,Couple","September,April",Bali
+International,Luxury,138454,391048,Couple,"May,October",Seychelles
+Domestic,"Adventure,Nature",12236,33237,"Couple,Friends","October,May",Shimla
+International,"Beach,Relaxation",85547,290778,Couple,April,Maldives
+Domestic,Relaxation,10317,35085,Couple,"March,November,April",Shimla
+International,Nature,102264,248331,Family,"October,March,November",Japan
+Domestic,Adventure,13972,39331,Solo,November,Sundarbans
+Domestic,"Adventure,Nature",10142,24641,"Solo,Friends",May,Chopta
+Domestic,Cultural,13246,52931,Couple,"February,December,January",Goa
+Domestic,Relaxation,13270,40709,Couple,March,Munnar
+International,"Nature,Beach",210728,497404,Couple,November,Australia
+Domestic,"Nature,Adventure",13132,35101,"Friends,Solo",September,Ziro Valley
+International,Nature,129216,364475,"Family,Friends","July,February,December",Switzerland
+International,"Nature,Wildlife,Adventure",186421,434428,"Couple,Family","October,August,September",Tanzania
+Domestic,Cultural,13850,46733,Solo,"January,March,November",Goa
+International,"Luxury,Beach",86089,212500,Family,"January,February,November",Dubai
+International,"Luxury,Cultural,Beach",68494,192000,"Family,Couple","March,January",Dubai
+Domestic,"Adventure,Nature",20558,48255,Couple,"December,March",Auli
+International,"Relaxation,Beach",60773,153321,Solo,June,Bali
+Domestic,"Cultural,Relaxation,Nature",19895,61316,Family,September,Kerala
+International,Adventure,41353,88102,"Solo,Friends","November,February",Cambodia
+Domestic,"Nature,Adventure",8965,24406,Solo,March,Hampi
+Domestic,"Luxury,Cultural",18112,84360,"Family,Friends","October,January",Rajasthan
+Domestic,"Nature,Relaxation",14692,39092,Family,"March,September,February",Munnar
+Domestic,"Nature,Wildlife",19154,55527,"Family,Solo",December,Kaziranga
+Domestic,"Adventure,Nature",18142,48958,Couple,December,Auli
+International,"Nature,Cultural,Adventure",197121,472713,"Friends,Solo","September,January,August",Canada
+International,"Nature,Cultural",74808,177695,"Friends,Couple",August,Singapore
+International,"Nature,Cultural,Adventure,Beach",45459,117239,Couple,"January,December",Malaysia
+Domestic,Cultural,7975,24765,Family,March,Amritsar
+International,"Wildlife,Adventure,Nature,Cultural",124626,291833,Couple,"June,May",Peru
+Domestic,"Luxury,Cultural",13709,52514,"Couple,Family",October,Jaipur
+Domestic,Nature,13340,32898,Family,"September,May",Darjeeling
+International,"Nature,Wildlife,Beach,Cultural",36860,91364,"Couple,Family",April,Sri Lanka
+International,Nature,56598,154089,"Solo,Couple","March,December",Philippines
+Domestic,"Nature,Adventure,Cultural",14230,42067,"Couple,Friends","December,October",Meghalaya
+International,"Nature,Adventure,Pilgrimage",19581,59109,"Friends,Solo","May,October,March",Nepal
+Domestic,"Cultural,Pilgrimage",7979,19931,Family,February,Mathura Vrindavan
+Domestic,Adventure,14775,42265,Family,October,Coorg
+International,"Cultural,Beach",121957,301269,Couple,"August,September,October",South Africa
+Domestic,Relaxation,14243,41223,"Family,Couple","September,March,November",Munnar
+International,Cultural,59745,163126,"Friends,Solo","July,April",Bali
+International,"Beach,Luxury,Nature,Cultural",112321,298286,Family,May,Italy
+Domestic,"Adventure,Pilgrimage",9029,28663,Solo,"September,April",Rishikesh
+International,"Cultural,Luxury,Relaxation",129400,291150,Couple,"May,October",Greece
+Domestic,Cultural,14297,39400,"Family,Friends","November,January",Rann of Kutch
+Domestic,Pilgrimage,7713,27228,"Family,Couple",September,Tirupati
+Domestic,"Beach,Relaxation,Cultural",13592,48050,"Couple,Solo",December,Goa
+Domestic,"Relaxation,Nature",12936,31343,Couple,October,Darjeeling
+Domestic,"Pilgrimage,Adventure",8938,22580,"Solo,Friends","October,June",Chopta
+Domestic,"Adventure,Wildlife",15176,37952,Friends,"February,November,October",Sundarbans
+International,"Wildlife,Beach",191240,518466,Friends,March,Australia
+International,"Relaxation,Luxury",155546,361592,"Friends,Solo","September,June",Paris
+International,Adventure,192941,425280,Family,"September,July",Tanzania
+International,Luxury,150512,353699,"Solo,Friends","September,April,May",Paris
+International,Cultural,94626,233941,Couple,"March,April",Mexico
+Domestic,"Cultural,Relaxation,Beach",10949,31867,"Friends,Couple","December,October",Pondicherry
+Domestic,"Nature,Adventure",15546,41022,"Couple,Friends","December,January,September",Coorg
+International,"Wildlife,Nature",152053,332469,"Family,Friends",September,Kenya
+International,Pilgrimage,84521,203019,"Couple,Solo","March,September",Jordan
+International,"Nature,Adventure,Wildlife",194896,419820,"Family,Couple","September,October,August",Tanzania
+Domestic,"Nature,Adventure,Beach",32155,73034,"Family,Friends","March,April",Andaman Islands
+Domestic,"Nature,Relaxation",13515,39806,Family,"December,March",Munnar
+Domestic,Nature,21021,55381,Solo,"December,March,February",Auli
+International,"Relaxation,Beach,Cultural",89280,207587,Couple,"September,October",Portugal
+International,"Adventure,Cultural",79910,190453,Couple,April,Bhutan
+International,"Adventure,Nature,Beach",51046,136547,Solo,"May,July,September",Indonesia
+International,"Beach,Relaxation",88623,224459,"Solo,Friends",September,Portugal
+International,Nature,189732,422120,Friends,"August,July,June",Norway
+International,"Pilgrimage,Adventure,Cultural",80620,192551,Solo,April,Jordan
+International,"Adventure,Cultural,Beach",81892,198124,Family,"May,April",Turkey
+Domestic,"Adventure,Nature",16444,44289,Couple,December,Manali
+International,"Adventure,Nature",189345,441809,"Couple,Friends",December,Norway
+Domestic,"Luxury,Adventure,Cultural",20928,84027,Couple,"November,January",Rajasthan
+International,"Adventure,Pilgrimage,Cultural",82940,188041,Friends,October,Egypt
+Domestic,Nature,10170,25633,"Solo,Friends",March,Hampi
+International,"Relaxation,Beach",97382,207874,"Solo,Friends","April,September",Portugal
+Domestic,"Nature,Relaxation",15419,43714,"Couple,Family","March,October",Munnar
+Domestic,"Beach,Cultural,Relaxation",16233,54341,Couple,"March,February,November",Goa
+International,Adventure,148543,378396,Friends,"October,July",Kenya
+Domestic,"Cultural,Adventure,Luxury",18219,82059,Friends,"January,March,February",Rajasthan
+International,"Cultural,Relaxation",72217,174837,Couple,"October,June,May",Czech Republic
+International,Wildlife,140372,360586,Family,"July,August,June",Kenya
+International,Wildlife,169759,409275,"Couple,Family","July,June,October",Tanzania
+International,"Nature,Cultural,Beach",130576,295141,Couple,"April,September",Italy
+Domestic,Pilgrimage,6818,25074,"Family,Couple","February,October,September",Tirupati
+International,"Cultural,Beach,Adventure",64891,162319,Couple,September,Morocco
+Domestic,"Nature,Cultural,Adventure",16264,44776,Couple,"November,February",Rann of Kutch
+Domestic,"Relaxation,Nature,Cultural",17400,55258,"Solo,Couple",January,Kerala
+International,"Cultural,Luxury",111533,265071,Family,"October,June",Spain
+International,"Pilgrimage,Adventure",20620,60046,Couple,"November,May,March",Nepal
+International,"Relaxation,Luxury",93315,322647,Friends,"December,November,February",Maldives
+Domestic,"Nature,Adventure,Cultural",14886,38921,Friends,"December,February",Rann of Kutch
+Domestic,"Luxury,Cultural,Adventure",20682,79664,Family,"October,November",Rajasthan
+International,"Relaxation,Cultural",80670,193513,Friends,September,Czech Republic
+International,"Beach,Adventure,Relaxation,Cultural",52224,129775,Friends,"December,March",Thailand
+International,Cultural,133574,324984,"Solo,Friends",April,Paris
+International,Cultural,87052,201085,"Solo,Couple",October,Czech Republic
+International,"Adventure,Cultural,Nature",55004,142462,Solo,July,Indonesia
+International,Cultural,34348,80228,"Solo,Couple","January,November",Cambodia
+Domestic,"Nature,Cultural,Adventure",17961,46809,"Friends,Solo","August,September,July",Spiti Valley
+International,"Adventure,Cultural,Nature",55090,136745,"Solo,Friends",May,Indonesia
+International,"Adventure,Nature,Cultural,Beach",56277,150824,"Friends,Solo","June,August,April",Indonesia
+International,"Beach,Adventure,Cultural",117528,301264,"Family,Couple","October,June",South Africa
+International,"Relaxation,Cultural",82783,186860,Solo,"June,April,September",Czech Republic
+International,Nature,192127,419375,"Family,Friends","August,September",Canada
+International,"Cultural,Relaxation",86670,188724,"Solo,Friends","May,April,September",Czech Republic
+Domestic,"Nature,Adventure",10664,25408,"Solo,Couple","December,October",Hampi
+International,"Adventure,Cultural,Nature,Beach",47801,125152,"Friends,Couple","April,June,July",Malaysia
+Domestic,Luxury,14632,48195,"Family,Couple",January,Jaipur
+International,"Beach,Cultural,Relaxation,Luxury",118480,273322,"Couple,Family","May,October,June",Greece
+International,Adventure,218878,544485,Solo,"November,October",Australia
+International,"Relaxation,Cultural",99879,237411,Couple,June,Zanzibar
+Domestic,Relaxation,10927,29179,Friends,November,Ooty
+Domestic,Nature,13956,38225,"Friends,Family","December,January",Rann of Kutch
+International,"Adventure,Nature",119401,304596,Solo,April,Peru
+Domestic,"Nature,Relaxation",8830,29527,"Couple,Friends",May,Ooty
+International,"Luxury,Nature",69420,190631,"Friends,Couple","August,March,April",Singapore
+International,Nature,61218,180171,"Friends,Family","February,April",Singapore
+Domestic,"Nature,Adventure",14020,39354,Family,"October,December",Coorg
+Domestic,"Nature,Adventure",9856,29934,Solo,"September,April",Rishikesh
+Domestic,Cultural,13302,48629,"Family,Friends","January,February",Jaipur
+International,Luxury,76570,201267,Friends,"November,February,March",Dubai
+International,"Wildlife,Nature",162665,364958,Couple,September,Tanzania
+Domestic,Cultural,20430,54353,Friends,"July,September",Spiti Valley
+International,"Wildlife,Adventure",184367,412337,"Friends,Solo","June,December,July",Canada
+International,Relaxation,103404,218803,"Friends,Solo",September,Portugal
+Domestic,Nature,14254,37167,Friends,December,Manali
+International,"Cultural,Adventure,Wildlife,Nature,Beach",207727,536404,Family,"November,March",Australia
+Domestic,Relaxation,17513,61314,Solo,February,Kerala
+International,"Nature,Cultural,Beach",36611,96718,Couple,"April,December",Sri Lanka
+Domestic,"Wildlife,Nature,Adventure",13657,40273,Family,"December,October,November",Sundarbans
+Domestic,"Adventure,Nature",17752,51744,"Solo,Couple",January,Auli
+International,"Cultural,Adventure,Wildlife,Nature",133469,311702,Friends,April,Peru
+International,Pilgrimage,70650,167674,"Solo,Friends","March,May,April",Bhutan
+International,Adventure,68474,160772,"Solo,Couple","April,March",Bhutan
+Domestic,"Wildlife,Adventure",13521,40723,"Solo,Family","September,October",Sundarbans
+Domestic,Nature,19275,48975,"Couple,Friends","December,January",Auli
+International,Cultural,74027,184622,Couple,"November,January,February",Dubai
+Domestic,"Luxury,Cultural",15154,54302,Family,"November,December,October",Jaipur
+International,Wildlife,187563,453890,"Family,Friends","August,September",Canada
+International,"Pilgrimage,Cultural",84905,209456,"Solo,Couple","November,March,September",Jordan
+International,"Adventure,Cultural,Luxury,Beach",83679,204097,Friends,"September,May",Turkey
+International,"Adventure,Wildlife",187685,399364,Couple,"February,December,March",New Zealand
+Domestic,Luxury,13428,50990,Friends,"November,March",Jaipur
+Domestic,Nature,10664,33064,"Couple,Family",April,Shimla
+International,"Cultural,Pilgrimage",83277,189474,Solo,"April,October,May",Bhutan
+International,"Nature,Wildlife",189079,409816,Family,"July,October",Tanzania
+International,Cultural,112123,278184,Friends,September,Peru
+Domestic,"Relaxation,Adventure",43742,94280,Couple,December,Lakshadweep
+International,"Luxury,Relaxation",153225,373934,Friends,October,Paris
+Domestic,Adventure,9254,23265,"Solo,Friends","September,April,May",Chopta
+Domestic,"Cultural,Relaxation",9904,29716,Friends,February,Pondicherry
+Domestic,Nature,13180,37421,"Couple,Friends","January,November",Coorg
+International,"Beach,Cultural,Adventure,Relaxation",98688,236221,Solo,November,Mexico
+Domestic,"Adventure,Relaxation,Nature",12754,38999,"Family,Couple","May,December",Shimla
+International,"Beach,Cultural",105173,262930,Couple,"March,February,November",Mexico
+Domestic,Nature,21139,50172,"Friends,Solo",July,Spiti Valley
+Domestic,"Cultural,Pilgrimage",8588,27127,Couple,"December,March",Tirupati
+Domestic,"Pilgrimage,Cultural",7872,19844,Couple,March,Mathura Vrindavan
+International,"Cultural,Nature,Luxury",102323,239084,Couple,"November,March,April",Japan
+Domestic,"Nature,Relaxation,Adventure",14068,40179,"Family,Friends","September,November,January",Coorg
+Domestic,Cultural,9746,29288,"Couple,Solo","February,January",Pondicherry
+Domestic,Nature,18491,50011,"Solo,Friends",June,Spiti Valley
+International,"Pilgrimage,Adventure",17082,58309,Friends,"April,March",Nepal
+Domestic,"Wildlife,Nature",21318,52925,Friends,"November,March,January",Kaziranga
+International,"Luxury,Cultural",73443,195803,"Family,Friends",July,Singapore
+International,"Cultural,Pilgrimage",85869,186981,"Friends,Solo","March,October,April",Jordan
+Domestic,"Nature,Cultural",14232,35228,"Solo,Family",April,Darjeeling
+International,"Luxury,Beach",76976,214479,Friends,January,Dubai
+International,Luxury,89557,231132,"Friends,Couple","May,August,June",Mauritius
+International,Relaxation,86767,221570,"Couple,Friends","September,April,June",Portugal
+International,"Adventure,Pilgrimage,Cultural",70702,165472,"Solo,Friends",November,Egypt
+Domestic,Cultural,9092,25877,"Family,Couple","January,February,November",Mysuru
+International,"Pilgrimage,Cultural",76437,169348,Couple,"November,January",Egypt
+International,"Nature,Cultural,Adventure",142245,321549,Friends,August,Peru
+International,"Beach,Luxury,Relaxation",128280,371280,"Couple,Friends","October,May,November",Seychelles
+International,"Adventure,Wildlife",185145,411726,Couple,"August,July",Tanzania
+International,"Luxury,Nature",130800,386953,Family,"July,June",Switzerland
+International,"Relaxation,Cultural",77195,182182,"Friends,Couple","June,October,April",Czech Republic
+International,"Adventure,Wildlife",110693,270465,"Friends,Family",September,South Africa
+Domestic,"Wildlife,Adventure,Nature",12951,37694,"Friends,Solo","December,January",Sundarbans
+International,"Adventure,Cultural,Wildlife,Beach,Nature",181293,481839,"Couple,Friends","November,May,September",Australia
+International,"Adventure,Nature",19127,57672,Friends,"May,March",Nepal
+International,Adventure,161622,361371,Friends,February,New Zealand
+Domestic,Nature,15798,39754,Couple,"October,January,February",Coorg
+Domestic,Adventure,15401,37958,Family,November,Rann of Kutch
+International,"Pilgrimage,Adventure",90503,201963,Couple,November,Jordan
+International,"Nature,Wildlife",111822,269070,Solo,August,Peru
+International,"Cultural,Adventure",50284,125546,Solo,"November,January",Thailand
+Domestic,"Adventure,Nature,Cultural",14745,39815,"Family,Couple",November,Rann of Kutch
+International,"Relaxation,Beach,Luxury",99363,250896,Couple,June,Mauritius
+Domestic,"Adventure,Pilgrimage",8652,23201,Friends,"September,October",Chopta
+International,"Cultural,Luxury,Beach",72111,204973,Friends,"December,February,November",Dubai
+International,"Adventure,Cultural",86074,191161,Couple,"January,December",Egypt
+International,"Luxury,Cultural,Relaxation",60907,157224,Couple,"May,April,July",Bali
+Domestic,Nature,14036,41437,"Friends,Solo","October,November,January",Sundarbans
+International,"Cultural,Luxury,Beach",103576,252262,"Solo,Family",June,Spain
+International,Relaxation,113787,240538,"Friends,Solo","September,October",Spain
+Domestic,Pilgrimage,8110,26400,"Couple,Solo","November,February,September",Tirupati
+International,"Adventure,Beach,Relaxation,Cultural",52244,116557,Friends,"February,December,November",Thailand
+International,"Luxury,Nature,Adventure",159331,437572,Friends,July,Switzerland
+Domestic,Cultural,15767,41939,"Couple,Friends",December,Rann of Kutch
+International,Relaxation,96880,258881,"Family,Solo","January,February",Mexico
+International,"Wildlife,Cultural,Adventure,Nature,Beach",187610,521745,Friends,"May,October,November",Australia
+International,"Relaxation,Cultural,Luxury",129892,353826,Solo,April,Paris
+Domestic,"Adventure,Beach",37378,92298,Friends,"December,October",Lakshadweep
+International,"Wildlife,Cultural",113012,280298,"Friends,Family",August,South Africa
+International,"Luxury,Relaxation,Beach",103291,272047,"Couple,Friends","September,April",Mauritius
+International,Adventure,181140,410981,Couple,"December,November,June",Norway
+International,"Wildlife,Nature,Adventure",196633,436940,"Friends,Family",September,Tanzania
+International,Pilgrimage,81217,185428,Solo,"October,January",Egypt
+International,"Relaxation,Beach",106424,229100,Solo,"May,April,October",Portugal
+International,"Cultural,Nature,Beach",60023,160534,"Friends,Solo",June,Indonesia
+International,"Cultural,Beach,Nature,Adventure",51991,154593,Couple,"April,February",Philippines
+International,"Beach,Adventure,Relaxation",97565,233264,Friends,"March,December,February",Mexico
+International,"Cultural,Beach,Luxury",113627,292219,Family,October,Greece
+International,"Cultural,Adventure,Nature",82625,197214,"Solo,Couple","March,April,May",Bhutan
+Domestic,Beach,29135,65423,"Family,Couple","January,March",Andaman Islands
+Domestic,"Wildlife,Adventure",18366,64291,"Couple,Friends","November,April",Jim Corbett
+Domestic,Adventure,8833,23654,Couple,"March,October,December",Hampi
+International,"Adventure,Nature",162304,367925,"Couple,Friends","December,July",Iceland
+Domestic,Cultural,17637,56719,Family,"January,October,December",Kerala
+International,Adventure,76837,202873,Couple,"October,May,September",Turkey
+Domestic,"Cultural,Adventure,Nature",8839,22616,"Solo,Friends","January,November,October",Hampi
+International,"Cultural,Adventure,Beach,Nature",60201,159907,Friends,"January,April,February",Philippines
+International,"Adventure,Beach,Nature",63087,160826,Couple,"August,July",Indonesia
+International,"Wildlife,Adventure,Cultural",195768,462740,Solo,"August,December",Canada
+International,Wildlife,159594,381007,"Family,Friends","September,June",Tanzania
+Domestic,"Beach,Nature,Adventure",30779,67784,"Couple,Family","October,March",Andaman Islands
+International,"Relaxation,Beach,Luxury,Cultural",125663,304959,"Friends,Family",September,Greece
+Domestic,Adventure,17812,56216,Couple,"December,January",Jim Corbett
+International,"Adventure,Cultural,Beach",50604,116123,Family,March,Malaysia
+International,"Cultural,Adventure,Beach,Nature",38600,102938,Friends,September,Vietnam
+International,Luxury,77941,193070,"Friends,Couple","October,April",Turkey
+International,Adventure,163802,371780,"Family,Couple","February,January",Costa Rica
+Domestic,"Nature,Adventure",20268,52463,"Friends,Solo","June,July",Spiti Valley
+International,Luxury,104303,256196,"Solo,Couple",March,Japan
+International,Luxury,99570,269920,Family,"March,April,October",Japan
+International,"Nature,Wildlife",218105,489493,Solo,January,Canada
+Domestic,Cultural,9101,22853,Friends,"January,September",Mysuru
+Domestic,Nature,13849,40277,Solo,February,Manali
+International,"Relaxation,Beach",97788,234889,"Couple,Friends","August,September",Mauritius
+International,Adventure,85046,179119,"Friends,Family","October,March",Egypt
+International,"Wildlife,Nature",114162,273503,Solo,May,Peru
+International,"Luxury,Cultural,Beach",87585,195632,"Family,Couple","May,September,October",Turkey
+Domestic,"Nature,Beach,Adventure",28946,71614,Couple,"March,December",Andaman Islands
+International,"Adventure,Beach,Nature,Cultural",49442,127200,Friends,April,Malaysia
+International,"Luxury,Cultural,Beach",81266,199197,"Family,Couple",December,Dubai
+International,"Beach,Adventure,Cultural",124971,306016,"Couple,Family","October,July,September",South Africa
+Domestic,"Adventure,Cultural,Luxury",17231,85990,"Family,Friends",October,Rajasthan
+Domestic,"Nature,Relaxation,Cultural",19527,58038,Solo,"October,November",Kerala
+Domestic,Nature,20229,54038,"Friends,Solo","August,July",Spiti Valley
+Domestic,"Nature,Cultural",14714,34692,Couple,"October,September",Darjeeling
+Domestic,"Nature,Cultural,Relaxation",19972,62165,Solo,January,Kerala
+International,"Cultural,Adventure",97340,204120,Solo,"May,November",Jordan
+Domestic,"Nature,Adventure,Cultural",15731,39288,"Family,Couple","December,January",Rann of Kutch
+International,"Adventure,Nature",158662,369459,Friends,"December,November",New Zealand
+International,Adventure,42620,108041,"Solo,Couple","November,March,February",Thailand
+Domestic,"Cultural,Pilgrimage",8357,21228,Solo,"February,March,October",Mathura Vrindavan
+International,"Cultural,Nature,Luxury",62673,183663,Friends,"March,February",Singapore
+International,Cultural,172786,414247,"Solo,Couple",December,Canada
+International,"Luxury,Nature,Cultural",90389,256309,"Couple,Solo",November,Japan
+International,"Adventure,Nature",37885,95334,"Solo,Couple","November,February",Cambodia
+International,"Wildlife,Adventure,Beach,Cultural",124029,301407,Couple,"October,June",South Africa
+Domestic,"Nature,Relaxation",12588,36688,Couple,"December,May",Shimla
+Domestic,Nature,10490,31319,Solo,"April,October,February",Rishikesh
+International,"Luxury,Cultural",152325,379346,Couple,May,Paris
+International,"Beach,Adventure,Nature,Cultural",54940,157450,"Friends,Solo",January,Philippines
+Domestic,"Relaxation,Cultural",15581,34150,"Solo,Family","May,April",Darjeeling
+International,"Cultural,Adventure",169671,378285,"Couple,Solo",November,Norway
+International,"Wildlife,Adventure,Nature",163754,371788,Family,October,Kenya
+Domestic,"Pilgrimage,Adventure",10334,33161,"Friends,Couple","March,September,November",Rishikesh
+Domestic,"Beach,Cultural",16045,54822,"Couple,Friends",January,Goa
+Domestic,Cultural,10296,24888,"Couple,Solo","February,March,November",Hampi
+Domestic,Adventure,17576,86132,"Friends,Couple","February,December,October",Rajasthan
+International,"Nature,Wildlife,Adventure",166305,378789,Couple,February,New Zealand
+International,"Adventure,Cultural",52687,118887,"Solo,Family",January,Thailand
+Domestic,"Beach,Cultural",8821,27304,"Solo,Friends","March,February,October",Pondicherry
+Domestic,Cultural,9651,23732,"Couple,Friends","December,October,February",Mysuru
+Domestic,Nature,8701,27455,"Solo,Friends","April,October",Rishikesh
+Domestic,"Nature,Cultural",13844,36856,Friends,March,Meghalaya
+Domestic,"Pilgrimage,Cultural",7074,17908,Family,January,Mathura Vrindavan
+International,"Adventure,Wildlife",133879,342241,"Solo,Friends",February,Costa Rica
+Domestic,Nature,21838,60180,"Family,Friends","January,February",Kaziranga
+International,Beach,35871,93813,"Couple,Solo","April,September",Vietnam
+International,"Beach,Nature",34930,99035,"Friends,Solo","April,March,August",Vietnam
+International,Beach,99152,246739,"Couple,Friends","September,August,October",Zanzibar
+Domestic,"Pilgrimage,Cultural",7249,23775,Family,"October,December",Amritsar
+Domestic,Cultural,21411,49729,Solo,September,Spiti Valley
+Domestic,Adventure,9288,23950,Solo,October,Hampi
+International,Relaxation,128216,284630,Couple,"October,September",Greece
+International,"Beach,Cultural",85376,219189,Family,"January,December,March",Dubai
+International,Beach,134645,357741,"Family,Friends",January,Costa Rica
+International,"Beach,Luxury,Nature,Cultural",118943,284844,Family,"June,September",Italy
+Domestic,Relaxation,9841,30114,"Family,Couple",June,Ooty
+International,"Beach,Cultural",114024,274561,Friends,"May,June,September",Greece
+International,Luxury,131775,404232,"Friends,Family","August,February,June",Switzerland
+Domestic,Nature,13622,39884,Friends,November,Manali
+International,"Nature,Adventure,Wildlife",177184,396633,"Friends,Couple",June,Tanzania
+International,Beach,123140,302791,"Couple,Family","October,May",Greece
+Domestic,"Nature,Cultural,Adventure",22814,55113,"Solo,Couple","August,September",Ladakh
+Domestic,Nature,18618,47478,Solo,September,Spiti Valley
+Domestic,"Nature,Relaxation",21725,64635,"Solo,Couple",September,Kerala
+International,"Cultural,Wildlife,Beach,Adventure",118947,276020,"Family,Friends","June,August,September",South Africa
+International,Nature,62286,176860,Friends,July,Singapore
+International,"Beach,Nature,Adventure,Cultural",34675,98179,Friends,April,Vietnam
+International,Beach,85116,291805,"Friends,Couple","February,April",Maldives
+Domestic,"Beach,Nature",31085,74137,"Couple,Friends",December,Andaman Islands
+Domestic,"Nature,Adventure",13598,37776,Solo,"January,December",Meghalaya
+International,"Relaxation,Beach,Luxury,Cultural",110467,268411,Friends,"October,May",Greece
+Domestic,"Beach,Adventure,Relaxation",38855,91467,"Friends,Couple","January,March",Lakshadweep
+Domestic,"Adventure,Nature",21871,58407,"Couple,Family","December,March,April",Jim Corbett
+Domestic,Cultural,14653,47893,"Solo,Friends","November,January,February",Goa
+Domestic,Nature,16215,36380,"Solo,Couple","March,April",Ziro Valley
+International,Cultural,38996,96057,Friends,"November,January",Cambodia
+International,"Nature,Luxury",148392,373402,Couple,"June,December",Switzerland
+Domestic,"Pilgrimage,Cultural",7501,23995,Family,February,Amritsar
+Domestic,"Adventure,Nature,Cultural",10881,24916,Couple,"January,December,November",Hampi
+International,Relaxation,103115,254788,Friends,"September,October",Zanzibar
+International,"Beach,Cultural,Adventure,Nature",53790,143379,"Friends,Couple","April,January,December",Philippines
+International,Nature,114463,300109,Couple,"September,April",Italy
+International,Adventure,154040,405379,Solo,"August,July,December",Norway
+International,"Wildlife,Adventure,Cultural",129573,294023,Friends,August,South Africa
+Domestic,"Wildlife,Nature",18476,56940,"Friends,Family","May,November,March",Jim Corbett
+International,"Cultural,Relaxation",125529,286943,"Couple,Friends",October,Greece
+International,"Luxury,Cultural,Relaxation,Beach",104917,261332,Friends,"June,May,October",Greece
+International,"Nature,Adventure",53249,134872,Couple,April,Indonesia
+Domestic,"Cultural,Relaxation",8906,31859,Solo,"November,December,February",Pondicherry
+International,"Nature,Wildlife,Beach,Adventure",130664,329043,"Couple,Solo","February,April,December",Costa Rica
+International,"Beach,Luxury,Nature",116253,294650,"Friends,Family",October,Italy
+International,"Adventure,Wildlife,Nature,Cultural",180486,455214,"Couple,Family","December,September,January",Canada
+International,"Beach,Wildlife",113955,275334,"Couple,Family","September,August,June",South Africa
+Domestic,"Pilgrimage,Nature",9848,32847,"Solo,Friends",November,Rishikesh
+International,"Luxury,Cultural,Nature",137751,291965,"Friends,Couple",October,Italy
+International,"Cultural,Beach,Luxury",102869,283000,"Family,Friends","October,May,September",Greece
+International,Wildlife,155766,395521,"Couple,Family",September,Tanzania
+Domestic,"Nature,Wildlife",20408,56721,"Friends,Family","December,March,April",Kaziranga
+Domestic,"Relaxation,Beach",13682,46846,Friends,"January,November",Goa
+Domestic,Nature,15838,35699,Solo,April,Ziro Valley
+International,"Adventure,Beach,Nature",34541,100530,"Solo,Friends","March,September",Vietnam
+Domestic,"Nature,Cultural",10290,27328,"Couple,Friends","November,March,October",Hampi
+Domestic,"Cultural,Pilgrimage",8067,27107,"Couple,Solo","September,January",Tirupati
+Domestic,"Relaxation,Beach,Cultural",8926,30071,"Solo,Couple","October,February,January",Pondicherry
+International,Nature,146509,405914,"Family,Couple","February,December",Switzerland
+International,Beach,69264,199642,Friends,March,Dubai
+International,"Wildlife,Nature",161398,378519,"Couple,Solo",March,New Zealand
+Domestic,Adventure,34870,86824,"Couple,Friends","December,April,October",Lakshadweep
+International,"Relaxation,Adventure,Beach",102832,249007,Family,November,Mexico
+Domestic,"Adventure,Cultural",16288,34968,"Friends,Couple",March,Ziro Valley
+International,"Wildlife,Adventure,Nature,Beach,Cultural",170216,494617,Couple,October,Australia
+Domestic,Nature,13199,33685,"Couple,Solo","May,November",Darjeeling
+International,"Wildlife,Nature,Adventure,Cultural,Beach",208113,530967,"Family,Couple",September,Australia
+Domestic,"Adventure,Beach",30292,70535,Friends,"February,December",Andaman Islands
+International,Beach,49341,120642,Family,"February,November",Thailand
+Domestic,"Beach,Nature",31760,77562,"Family,Friends","March,December,January",Andaman Islands
+International,"Beach,Cultural,Adventure",43579,110299,Couple,"August,February,April",Vietnam
+Domestic,"Nature,Adventure,Cultural",14197,41275,Couple,October,Meghalaya
+Domestic,Relaxation,10206,26187,"Couple,Friends","December,September",Mysuru
+International,"Relaxation,Cultural",148513,375105,"Friends,Solo","June,October",Paris
+Domestic,Nature,15520,43093,Family,February,Coorg
+International,"Adventure,Wildlife,Nature,Cultural",112802,275802,Friends,"August,April",Peru
+Domestic,"Cultural,Relaxation,Beach",15221,49821,"Couple,Friends",November,Goa
+International,"Beach,Nature,Adventure,Wildlife",134934,349997,Couple,March,Costa Rica
+Domestic,"Pilgrimage,Cultural",8535,29205,"Family,Solo",December,Varanasi
+Domestic,"Relaxation,Nature",8562,30983,Friends,October,Ooty
+Domestic,"Cultural,Pilgrimage",8320,25495,Solo,"December,February,October",Amritsar
+International,Adventure,21791,63784,Friends,November,Nepal
+Domestic,Relaxation,9272,29476,Friends,April,Ooty
