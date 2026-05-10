@@ -79,6 +79,7 @@ class UserResponse(BaseModel):
 class UserUpdateRequest(BaseModel):
     first_name: Optional[str] = None
     last_name: Optional[str] = None
+    email: Optional[EmailStr] = None
     phone: Optional[str] = None
     city: Optional[str] = None
     country: Optional[str] = None

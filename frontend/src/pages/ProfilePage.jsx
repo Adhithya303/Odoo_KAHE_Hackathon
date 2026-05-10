@@ -1,19 +1,80 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
 import Button from '../components/common/Button';
 import Input from '../components/common/Input';
 import Badge from '../components/common/Badge';
-import { updateMe } from '../api/auth';
+import Spinner from '../components/common/Spinner';
+import api from '../api/client';
+import { getPreferences, savePreferences, updateMe } from '../api/auth';
 import toast from 'react-hot-toast';
+
+const TRIP_SCOPE_OPTIONS = ['Both', 'Domestic', 'International'];
+const BUDGET_TIER_OPTIONS = ['Budget', 'Mid-range', 'Premium'];
+const TRIP_TYPE_OPTIONS = ['Adventure', 'Beach', 'Cultural', 'Nature', 'Relaxation'];
+const GROUP_TYPE_OPTIONS = ['Solo', 'Couple', 'Friends', 'Family'];
 
 export default function ProfilePage() {
   const { user, setUser } = useAuthStore();
-  const [form, setForm] = useState({ first_name: user?.first_name || '', last_name: user?.last_name || '', phone: user?.phone || '', city: user?.city || '', country: user?.country || '' });
+  const [form, setForm] = useState({
+    first_name: user?.first_name || '',
+    last_name: user?.last_name || '',
+    email: user?.email || '',
+    phone: user?.phone || '',
+    city: user?.city || '',
+    country: user?.country || '',
+  });
+  const [preferences, setPreferences] = useState({
+    trip_scope: 'Both',
+    budget_tier: 'Mid-range',
+    trip_types: [],
+    group_types: [],
+    min_budget: '',
+    max_budget: '',
+  });
   const [loading, setLoading] = useState(false);
+  const [prefsLoading, setPrefsLoading] = useState(true);
+  const [prefsSaving, setPrefsSaving] = useState(false);
 
   const [activeTab, setActiveTab] = useState('settings');
   const [savedTrips, setSavedTrips] = useState([]);
   const [fetchingSaved, setFetchingSaved] = useState(false);
+
+  useEffect(() => {
+    setForm({
+      first_name: user?.first_name || '',
+      last_name: user?.last_name || '',
+      email: user?.email || '',
+      phone: user?.phone || '',
+      city: user?.city || '',
+      country: user?.country || '',
+    });
+  }, [user]);
+
+  useEffect(() => {
+    const loadPreferences = async () => {
+      try {
+        const { data } = await getPreferences();
+        if (data?.has_preferences) {
+          setPreferences({
+            trip_scope: data.trip_scope || 'Both',
+            budget_tier: data.budget_tier || 'Mid-range',
+            trip_types: data.trip_types || [],
+            group_types: data.group_types || [],
+            min_budget: data.min_budget ?? '',
+            max_budget: data.max_budget ?? '',
+          });
+        }
+      } catch (err) {
+        console.error(err);
+        toast.error('Failed to load personalization');
+      } finally {
+        setPrefsLoading(false);
+      }
+    };
+
+    loadPreferences();
+  }, []);
 
   const fetchSavedTrips = async () => {
     try {
@@ -50,6 +111,35 @@ export default function ProfilePage() {
       toast.success('Profile updated!');
     } catch { toast.error('Failed to update profile'); }
     setLoading(false);
+  };
+
+  const togglePreferenceValue = (field, value) => {
+    setPreferences((prev) => ({
+      ...prev,
+      [field]: prev[field].includes(value)
+        ? prev[field].filter((item) => item !== value)
+        : [...prev[field], value],
+    }));
+  };
+
+  const handleSavePreferences = async (e) => {
+    e.preventDefault();
+    setPrefsSaving(true);
+    try {
+      await savePreferences({
+        trip_scope: preferences.trip_scope,
+        budget_tier: preferences.budget_tier,
+        trip_types: preferences.trip_types,
+        group_types: preferences.group_types,
+        min_budget: preferences.min_budget === '' ? null : Number(preferences.min_budget),
+        max_budget: preferences.max_budget === '' ? null : Number(preferences.max_budget),
+      });
+      toast.success('Personalization updated!');
+    } catch {
+      toast.error('Failed to update personalization');
+    } finally {
+      setPrefsSaving(false);
+    }
   };
 
   return (
@@ -97,7 +187,7 @@ export default function ProfilePage() {
                       <Input label="First Name" value={form.first_name} onChange={e => setForm({ ...form, first_name: e.target.value })} />
                       <Input label="Last Name" value={form.last_name} onChange={e => setForm({ ...form, last_name: e.target.value })} />
                     </div>
-                    <Input label="Email" value={user?.email || ''} disabled />
+                    <Input label="Email" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
                     <Input label="Phone" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} placeholder="+91 98765 43210" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <Input label="City" value={form.city} onChange={e => setForm({ ...form, city: e.target.value })} />
@@ -105,6 +195,113 @@ export default function ProfilePage() {
                     </div>
                     <Button type="submit" loading={loading} className="px-12 py-4 rounded-2xl shadow-lg">Save Changes</Button>
                   </form>
+                </div>
+
+                <div className="bg-white rounded-3xl shadow-sm border border-[#E0D8CC] p-8">
+                  <h3 className="font-display text-xl font-bold text-[#2C2C2A] mb-2">Personalization</h3>
+                  <p className="text-gray-500 mb-6">Update your recommendation settings anytime from here.</p>
+
+                  {prefsLoading ? (
+                    <div className="flex justify-center py-10"><Spinner /></div>
+                  ) : (
+                    <form onSubmit={handleSavePreferences} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-medium text-body mb-2">Trip Scope</label>
+                          <select
+                            className="input-field"
+                            value={preferences.trip_scope}
+                            onChange={(e) => setPreferences({ ...preferences, trip_scope: e.target.value })}
+                          >
+                            {TRIP_SCOPE_OPTIONS.map((option) => (
+                              <option key={option} value={option}>{option}</option>
+                            ))}
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-body mb-2">Budget Tier</label>
+                          <select
+                            className="input-field"
+                            value={preferences.budget_tier}
+                            onChange={(e) => setPreferences({ ...preferences, budget_tier: e.target.value })}
+                          >
+                            {BUDGET_TIER_OPTIONS.map((option) => (
+                              <option key={option} value={option}>{option}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <Input
+                          label="Minimum Budget"
+                          type="number"
+                          min="0"
+                          value={preferences.min_budget}
+                          onChange={(e) => setPreferences({ ...preferences, min_budget: e.target.value })}
+                          placeholder="5000"
+                        />
+                        <Input
+                          label="Maximum Budget"
+                          type="number"
+                          min="0"
+                          value={preferences.max_budget}
+                          onChange={(e) => setPreferences({ ...preferences, max_budget: e.target.value })}
+                          placeholder="50000"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-body mb-3">Preferred Trip Types</label>
+                        <div className="flex flex-wrap gap-3">
+                          {TRIP_TYPE_OPTIONS.map((option) => {
+                            const active = preferences.trip_types.includes(option);
+                            return (
+                              <button
+                                key={option}
+                                type="button"
+                                onClick={() => togglePreferenceValue('trip_types', option)}
+                                className={`px-4 py-2 rounded-full border transition-all ${
+                                  active
+                                    ? 'bg-[#1D9E75] text-white border-[#1D9E75]'
+                                    : 'bg-[#F5F0E8] text-[#2C2C2A] border-[#E0D8CC] hover:border-[#1D9E75]'
+                                }`}
+                              >
+                                {option}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-body mb-3">Who Do You Usually Travel With?</label>
+                        <div className="flex flex-wrap gap-3">
+                          {GROUP_TYPE_OPTIONS.map((option) => {
+                            const active = preferences.group_types.includes(option);
+                            return (
+                              <button
+                                key={option}
+                                type="button"
+                                onClick={() => togglePreferenceValue('group_types', option)}
+                                className={`px-4 py-2 rounded-full border transition-all ${
+                                  active
+                                    ? 'bg-[#1D9E75] text-white border-[#1D9E75]'
+                                    : 'bg-[#F5F0E8] text-[#2C2C2A] border-[#E0D8CC] hover:border-[#1D9E75]'
+                                }`}
+                              >
+                                {option}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      <Button type="submit" loading={prefsSaving} className="px-12 py-4 rounded-2xl shadow-lg">
+                        Save Personalization
+                      </Button>
+                    </form>
+                  )}
                 </div>
               </div>
             ) : (

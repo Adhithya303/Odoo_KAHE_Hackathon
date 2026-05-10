@@ -153,7 +153,14 @@ def get_me(user: User = Depends(get_current_user)):
 
 @router.put("/me", response_model=UserResponse)
 def update_me(req: UserUpdateRequest, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    for field, value in req.model_dump(exclude_unset=True).items():
+    updates = req.model_dump(exclude_unset=True)
+
+    if "email" in updates and updates["email"] != user.email:
+        existing_user = db.query(User).filter(User.email == updates["email"], User.id != user.id).first()
+        if existing_user:
+            raise HTTPException(status_code=400, detail="Email is already in use")
+
+    for field, value in updates.items():
         setattr(user, field, value)
     db.commit()
     db.refresh(user)

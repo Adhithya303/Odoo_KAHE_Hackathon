@@ -24,6 +24,7 @@ export default function ItineraryBuilderPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [sections, setSections] = useState([]);
+  const [activeSectionId, setActiveSectionId] = useState(null);
   const [mlInputs, setMlInputs] = useState({ duration: 0, city: '', travelers: 1, hotel_type: 'Mid' });
   const [predictedBudget, setPredictedBudget] = useState(null);
   const [hasUnsaved, setHasUnsaved] = useState(false);
@@ -47,9 +48,7 @@ export default function ItineraryBuilderPage() {
   /* ── Populate sections from loaded itinerary data ── */
   useEffect(() => {
     if (itineraryData && itineraryData.length > 0) {
-      // The backend now returns the correct flat format:
-      // [{id, title, description, start_date, end_date, budget_allocated, activities: [{id, time, name, cost, category}]}]
-      setSections(itineraryData.map(s => ({
+      const newSections = itineraryData.map(s => ({
         id: s.id || Date.now() + Math.random(),
         title: s.title || 'Stop',
         description: s.description || '',
@@ -64,11 +63,13 @@ export default function ItineraryBuilderPage() {
           cost: a.cost || 0,
           category: a.category || 'Sightseeing',
         })),
-      })));
+      }));
+      setSections(newSections);
+      if (newSections.length > 0) setActiveSectionId(newSections[0].id);
     } else if (trip && (!itineraryData || itineraryData.length === 0)) {
-      // No saved itinerary — create default sections from trip stops
+      let newSections = [];
       if (trip.stops && trip.stops.length > 0) {
-        setSections(trip.stops.map((s, i) => ({
+        newSections = trip.stops.map((s, i) => ({
           id: s.id || Date.now() + i,
           title: s.destination_name || s.section_title || s.custom_place || `Stop ${i + 1}`,
           description: s.description || '',
@@ -76,9 +77,9 @@ export default function ItineraryBuilderPage() {
           end_date: s.departure_date || trip.end_date,
           budget_allocated: s.stop_budget || 0,
           activities: [],
-        })));
+        }));
       } else {
-        setSections([{
+        newSections = [{
           id: Date.now(),
           title: trip.destination_name || 'Day 1',
           description: '',
@@ -86,8 +87,11 @@ export default function ItineraryBuilderPage() {
           end_date: trip.end_date,
           budget_allocated: 0,
           activities: [],
-        }]);
+        }];
       }
+      setSections(newSections);
+      if (newSections.length > 0) setActiveSectionId(newSections[0].id);
+      
       setMlInputs(prev => ({
         ...prev,
         duration: trip.duration_days || 0,
@@ -346,11 +350,12 @@ export default function ItineraryBuilderPage() {
                     type="button"
                     onClick={() => {
                       if (sections.length > 0) {
-                        const targetSection = sections[0];
-                        updateSection(targetSection.id, 'activities', [
-                          ...targetSection.activities,
-                          { id: Date.now(), time: '10:00', name: place.name, description: place.description, cost: place.estimated_cost_inr || 0, category: 'Sightseeing' }
-                        ]);
+                        const targetSection = sections.find(s => s.id === activeSectionId) || sections[0];
+                        setSections(sections.map(s => s.id === targetSection.id ? {
+                          ...s,
+                          activities: [...s.activities, { id: Date.now(), time: '10:00', name: place.name, description: place.description, cost: place.estimated_cost_inr || 0, category: 'Sightseeing' }]
+                        } : s));
+                        setHasUnsaved(true);
                         toast.success(`Added ${place.name} to ${targetSection.title}`);
                       } else {
                         toast.error('Add a section first');
@@ -381,7 +386,11 @@ export default function ItineraryBuilderPage() {
           </div>
 
           {sections.map((section, idx) => (
-            <div key={section.id} className="bg-white rounded-card shadow-sm border-l-4 border-l-primary p-6 relative">
+            <div key={section.id} 
+              onClick={() => setActiveSectionId(section.id)}
+              className={`bg-white rounded-card shadow-sm border-l-4 p-6 relative cursor-pointer transition-all ${
+                activeSectionId === section.id ? 'border-l-primary ring-2 ring-primary/30' : 'border-l-border hover:border-l-primary/50'
+              }`}>
               {/* Section Controls */}
               <div className="absolute top-4 right-4 flex gap-1">
                 <button onClick={() => moveSection(idx, 'up')} className="p-1 hover:bg-sand rounded disabled:opacity-30 text-sm" disabled={idx === 0}>🔼</button>

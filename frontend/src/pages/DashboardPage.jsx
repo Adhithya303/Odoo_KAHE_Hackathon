@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import useAuthStore from '../store/authStore';
@@ -8,7 +8,7 @@ import Button from '../components/common/Button';
 import Badge from '../components/common/Badge';
 
 import { listDestinations, filterDestinations, getTrending, getRecommendations } from '../api/destinations';
-import { getPreferences, savePreferences } from '../api/auth';
+import { getPreferences } from '../api/auth';
 import { listTrips, deleteTrip } from '../api/trips';
 import { formatDate, formatCurrency, getDuration } from '../utils/formatters';
 import { getDestImage, FALLBACK_IMAGE_URL } from '../utils/constants';
@@ -34,16 +34,6 @@ const TRAVEL_TIPS = [
 ];
 
 /* ═══════════════════════════════════════════════
-   Preference config for onboarding widget
-   ═══════════════════════════════════════════════ */
-const PREF_ROWS = [
-  { key: 'travel_style', label: 'Who are you traveling with?', options: ['Solo 🧳', 'Friends 👫', 'Family 👨‍👩‍👧', 'Couple 💑'] },
-  { key: 'trip_scope', label: 'Trip type:', options: ['Domestic 🇮🇳', 'International 🌍'] },
-  { key: 'travel_vibe', label: 'Vibe:', options: ['Adventure 🏔️', 'Cultural 🏛️', 'Beach 🏖️', 'Nature 🌿', 'Luxury 💎', 'Staycation 🏠'] },
-  { key: 'budget_range', label: 'Budget:', options: ['Budget <₹20k', 'Mid-range ₹20k–₹80k', 'Premium ₹80k+'] },
-];
-
-/* ═══════════════════════════════════════════════
    Status → Badge variant mapping
    ═══════════════════════════════════════════════ */
 const STATUS_VARIANT = {
@@ -66,7 +56,7 @@ function costLabel(index) {
    MAIN COMPONENT
    ═══════════════════════════════════════════════ */
 export default function DashboardPage() {
-  const { user, setUser } = useAuthStore();
+  const { user } = useAuthStore();
   const navigate = useNavigate();
 
   // ── Data states ──
@@ -81,11 +71,6 @@ export default function DashboardPage() {
   const [taglineIdx, setTaglineIdx] = useState(0);
   const [taglineFade, setTaglineFade] = useState(true);
 
-  // ── Onboarding widget ──
-  const [showPrefWidget, setShowPrefWidget] = useState(false);
-  const [prefs, setPrefs] = useState({ travel_style: null, trip_scope: null, travel_vibe: null, budget_range: null });
-  const [savingPrefs, setSavingPrefs] = useState(false);
-
   /* ── Tagline cycling effect ── */
   useEffect(() => {
     const interval = setInterval(() => {
@@ -98,12 +83,7 @@ export default function DashboardPage() {
     return () => clearInterval(interval);
   }, []);
 
-  /* ── Determine if onboarding widget should show ── */
-  useEffect(() => {
-    const dismissed = localStorage.getItem('traveloop_pref_dismissed') === 'true';
-    const noPrefs = !user?.travel_style;
-    setShowPrefWidget(!dismissed && noPrefs);
-  }, [user]);
+  /* Onboarding widget removed: do not show personalization prompt on first login */
 
   /* ── Data fetching ── */
   useEffect(() => {
@@ -172,36 +152,6 @@ export default function DashboardPage() {
     };
     load();
   }, [user]);
-
-  /* ── Preference chip toggle ── */
-  const togglePref = useCallback((key, value) => {
-    setPrefs((prev) => ({ ...prev, [key]: prev[key] === value ? null : value }));
-  }, []);
-
-  /* ── Save preferences ── */
-  const handleSavePrefs = async () => {
-    if (!prefs.travel_style && !prefs.trip_scope && !prefs.travel_vibe && !prefs.budget_range) {
-      toast.error('Please select at least one preference');
-      return;
-    }
-    setSavingPrefs(true);
-    try {
-      const res = await savePreferences(prefs);
-      if (res.data?.user) setUser(res.data.user);
-      setShowPrefWidget(false);
-      toast.success('Preferences saved! Recommendations updated.');
-    } catch {
-      toast.error('Failed to save preferences. Please try again.');
-    }
-    setSavingPrefs(false);
-  };
-
-  /* ── Dismiss onboarding widget ── */
-  const dismissPrefWidget = () => {
-    localStorage.setItem('traveloop_pref_dismissed', 'true');
-    setShowPrefWidget(false);
-  };
-
   /* ── Delete trip ── */
   const handleDeleteTrip = async (e, tripId) => {
     e.preventDefault();
@@ -265,60 +215,7 @@ export default function DashboardPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
-        {/* ════════════════════════════════════════════
-            SECTION 2 — Personalization Onboarding Widget
-            ════════════════════════════════════════════ */}
-        {showPrefWidget && (
-          <section className="animate-fade-in">
-            <div className="bg-white rounded-card border border-border shadow-card p-6 sm:p-8 border-l-4 border-l-primary relative">
-              {/* Dismiss X */}
-              <button
-                onClick={dismissPrefWidget}
-                className="absolute top-4 right-4 text-muted hover:text-body transition-colors text-xl leading-none"
-                aria-label="Dismiss preferences widget"
-              >
-                ✕
-              </button>
-
-              <h3 className="font-display text-xl font-bold text-body mb-1">✨ Tell us your travel style</h3>
-              <p className="text-muted text-sm mb-6">Get personalized destination recommendations</p>
-
-              <div className="space-y-5">
-                {PREF_ROWS.map((row) => (
-                  <div key={row.key}>
-                    <p className="text-sm font-semibold text-body mb-2">{row.label}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {row.options.map((opt) => {
-                        const isSelected = prefs[row.key] === opt;
-                        return (
-                          <button
-                            key={opt}
-                            onClick={() => togglePref(row.key, opt)}
-                            className={`
-                              px-4 py-2 rounded-badge text-sm font-medium transition-all duration-200
-                              ${isSelected
-                                ? 'bg-primary text-white shadow-glow'
-                                : 'bg-sand border border-border text-body hover:border-primary hover:text-primary'
-                              }
-                            `}
-                          >
-                            {opt}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6">
-                <Button onClick={handleSavePrefs} loading={savingPrefs} className="text-sm">
-                  Save Preferences
-                </Button>
-              </div>
-            </div>
-          </section>
-        )}
+        {/* Personalization onboarding widget intentionally removed */}
 
         {/* ════════════════════════════════════════════
             SECTION 3 — Recommended For You (upgraded)

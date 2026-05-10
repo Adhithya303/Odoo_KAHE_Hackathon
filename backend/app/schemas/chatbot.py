@@ -1,10 +1,12 @@
 """Chatbot Pydantic schemas."""
-from pydantic import BaseModel
-from typing import Optional, List
+
+from typing import List, Optional
+
+from pydantic import BaseModel, Field
 
 
 class ChatMessage(BaseModel):
-    role: str  # "user" or "assistant"
+    role: str
     content: str
 
 
@@ -12,9 +14,9 @@ class ChatRequest(BaseModel):
     message: str
     trip_id: Optional[int] = None
     destination_id: Optional[int] = None
-    conversation_history: List[ChatMessage] = []
+    conversation_history: List[ChatMessage] = Field(default_factory=list)
 
 
 class ChatResponse(BaseModel):
     reply: str
-    suggestions: List[str] = []
+    suggestions: List[str] = Field(default_factory=list)
