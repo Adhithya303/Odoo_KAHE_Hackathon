@@ -12,5 +12,5 @@ async def error_handler(request: Request, call_next):
         traceback.print_exc()
         return JSONResponse(
             status_code=500,
-            content={"error": "Internal server error", "code": "INTERNAL_ERROR"}
+            content={"error": "Internal server error", "code": "INTERNAL_ERROR", "detail": str(e)}
         )

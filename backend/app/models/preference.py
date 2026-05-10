@@ -30,5 +30,17 @@ class UserPreference(Base):
     updated_at = Column(DateTime, nullable=False, server_default=func.now(), onupdate=func.now())
 
     user = relationship("User", back_populates="preferences")
-    trip_types = relationship("TripType", secondary=user_pref_trip_types, lazy="joined")
-    group_types = relationship("GroupType", secondary=user_pref_group_types, lazy="joined")
+    trip_types = relationship(
+        "TripType", 
+        secondary=user_pref_trip_types, 
+        primaryjoin="UserPreference.user_id == user_pref_trip_types.c.user_id",
+        secondaryjoin="user_pref_trip_types.c.trip_type_id == TripType.id",
+        lazy="joined"
+    )
+    group_types = relationship(
+        "GroupType", 
+        secondary=user_pref_group_types, 
+        primaryjoin="UserPreference.user_id == user_pref_group_types.c.user_id",
+        secondaryjoin="user_pref_group_types.c.group_type_id == GroupType.id",
+        lazy="joined"
+    )

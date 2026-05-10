@@ -7,6 +7,9 @@ from app.routers import auth, destinations, recommendations, trips, budget, chat
 
 app = FastAPI(title="WanderIQ API", version="1.0.0", description="AI-Powered Travel Planning Platform")
 
+# Error handler
+app.middleware("http")(error_handler)
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
@@ -15,9 +18,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Error handler
-app.middleware("http")(error_handler)
 
 # Routers
 app.include_router(auth.router)

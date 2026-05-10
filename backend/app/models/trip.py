@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, Text, Date, Enum, DateTime, Fore
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database import Base
+from app.models.checklist import PackingChecklist
 
 
 class Trip(Base):
