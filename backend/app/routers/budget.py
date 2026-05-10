@@ -16,7 +16,38 @@ router = APIRouter(prefix="/api/trips/{trip_id}/budget", tags=["budget"])
 def get_budget(trip_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     trip = db.query(Trip).filter(Trip.id == trip_id, Trip.user_id == user.id).first()
     if not trip: raise HTTPException(404, "Trip not found")
-    return get_budget_summary(db, trip_id)
+    raw = get_budget_summary(db, trip_id)
+
+    # Normalise items list: expose as 'items' with 'category' (not category_id)
+    items = []
+    for e in (raw.get("expenses") or []):
+        items.append({
+            "id": e["id"],
+            "category": e.get("category_name") or e.get("category", "Other"),
+            "description": e.get("description", ""),
+            "quantity": e.get("qty", 1),
+            "unit_cost": e.get("unit_cost", 0),
+            "amount": e.get("amount", 0),
+        })
+
+    # Build by_day breakdown from expenses grouped by expense_date
+    by_day_map = {}
+    for e in (raw.get("expenses") or []):
+        day_key = e.get("expense_date") or "1"
+        by_day_map[day_key] = by_day_map.get(day_key, 0) + e.get("amount", 0)
+    by_day = [{"day": i + 1, "date": k, "amount": v} for i, (k, v) in enumerate(sorted(by_day_map.items()))]
+
+    return {
+        "items": items,
+        "summary": {
+            "total_budget": raw.get("total_budget", 0),
+            "total_spent": raw.get("total_spent", 0),
+            "remaining": raw.get("remaining", 0),
+            "by_category": raw.get("by_category", {}),
+            "by_day": by_day,
+        }
+    }
+
 
 
 @router.post("/predict")

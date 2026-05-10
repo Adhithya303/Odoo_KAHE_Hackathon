@@ -31,6 +31,8 @@ import BlogsPage from './pages/BlogsPage';
 import BlogDetailPage from './pages/BlogDetailPage';
 import CreateTripPage from './pages/CreateTripPage';
 import ItineraryBuilderPage from './pages/ItineraryBuilderPage';
+import ExploreSearchPage from './pages/ExploreSearchPage';
+import BudgetBreakdownPage from './pages/BudgetBreakdownPage';
 
 const qc = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 5 * 60 * 1000 } } });
 
@@ -101,6 +103,7 @@ export default function App() {
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/blogs/:slug" element={<BlogDetailPage />} />
+            <Route path="/explore" element={<ExploreSearchPage />} />
 
             {/* Protected pages */}
             <Route element={<ProtectedRoute />}>
@@ -109,6 +112,7 @@ export default function App() {
               <Route path="/trips/create" element={<CreateTripPage />} />
               <Route path="/trips/:id" element={<TripDetailPage />} />
               <Route path="/trips/:id/build" element={<ItineraryBuilderPage />} />
+              <Route path="/trips/:id/budget" element={<BudgetBreakdownPage />} />
               <Route path="/profile" element={<ProfilePage />} />
             </Route>
           </Route>
