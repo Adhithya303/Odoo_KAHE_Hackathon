@@ -16,10 +16,8 @@ import MyTripsPage from './pages/MyTripsPage';
 import TripDetailPage from './pages/TripDetailPage';
 import TravelTipsPage from './pages/TravelTipsPage';
 import ProfilePage from './pages/ProfilePage';
-<<<<<<< HEAD
 import ExperienceDetailPage from './pages/ExperienceDetailPage';
 import ContinentPage from './pages/ContinentPage';
-=======
 import AboutPage from './pages/AboutPage';
 import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
@@ -29,7 +27,10 @@ import InternationalTrendsPage from './pages/InternationalTrendsPage';
 import DestinationsPage from './pages/DestinationsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
->>>>>>> 54946c317acc59c70c4c69fa247f855e71cbfab9
+import BlogsPage from './pages/BlogsPage';
+import BlogDetailPage from './pages/BlogDetailPage';
+import CreateTripPage from './pages/CreateTripPage';
+import ItineraryBuilderPage from './pages/ItineraryBuilderPage';
 
 const qc = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 5 * 60 * 1000 } } });
 
@@ -87,10 +88,8 @@ export default function App() {
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/destinations/:id" element={<DestinationDetailPage />} />
             <Route path="/tips" element={<TravelTipsPage />} />
-<<<<<<< HEAD
             <Route path="/experiences/:slug" element={<ExperienceDetailPage />} />
             <Route path="/continents/:slug" element={<ContinentPage />} />
-=======
             <Route path="/about" element={<AboutPage />} />
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/contact" element={<ContactPage />} />
@@ -100,13 +99,16 @@ export default function App() {
             <Route path="/destinations" element={<DestinationsPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms" element={<TermsPage />} />
->>>>>>> 54946c317acc59c70c4c69fa247f855e71cbfab9
+            <Route path="/blogs" element={<BlogsPage />} />
+            <Route path="/blogs/:slug" element={<BlogDetailPage />} />
 
             {/* Protected pages */}
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/trips" element={<MyTripsPage />} />
+              <Route path="/trips/create" element={<CreateTripPage />} />
               <Route path="/trips/:id" element={<TripDetailPage />} />
+              <Route path="/trips/:id/build" element={<ItineraryBuilderPage />} />
               <Route path="/profile" element={<ProfilePage />} />
             </Route>
           </Route>

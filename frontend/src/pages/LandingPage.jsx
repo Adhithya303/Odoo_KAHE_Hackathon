@@ -316,8 +316,87 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── Blogs Preview ───────────────────────────────────── */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-2">📝 From Our Writers</p>
+            <h2 className="font-display text-4xl font-bold text-body">Travel Stories & Insights</h2>
+            <p className="text-muted mt-3 max-w-xl mx-auto text-sm">
+              Expert tips, hidden destinations, AI travel hacks, and real experiences — curated for the modern traveler.
+            </p>
+            <div className="mt-4 mx-auto w-24 h-[3px] rounded-full bg-gradient-to-r from-primary to-coral" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+            {[
+              {
+                slug: 'hidden-gems-southeast-asia',
+                category: 'Destinations',
+                color: '#0F6E56',
+                title: 'Hidden Gems of Southeast Asia You Must Visit',
+                desc: 'Beyond Bali and Bangkok lies a world of undiscovered wonders — misty limestone karsts and ancient temples.',
+                img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600',
+                time: '7 min read',
+              },
+              {
+                slug: 'ai-travel-planning-revolution',
+                category: 'Technology',
+                color: '#7C3AED',
+                title: 'How AI Is Revolutionizing the Way We Plan Trips',
+                desc: 'Forget spreadsheets. AI-powered itinerary builders are changing travel planning forever.',
+                img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600',
+                time: '6 min read',
+              },
+              {
+                slug: 'budget-europe-backpacking',
+                category: 'Tips & Tricks',
+                color: '#C85D38',
+                title: 'Backpacking Europe on ₹1,500 a Day: The 2025 Guide',
+                desc: 'From Lisbon to Ljubljana, savvy travelers prove Europe does not have to drain your bank account.',
+                img: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600',
+                time: '10 min read',
+              },
+            ].map((b) => (
+              <Link key={b.slug} to={`/blogs/${b.slug}`} className="card group cursor-pointer" style={{ textDecoration: 'none' }}>
+                <div className="relative h-52 overflow-hidden">
+                  <img src={b.img} alt={b.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <span
+                    className="absolute top-3 left-3 text-white text-xs font-bold px-3 py-1 rounded-full"
+                    style={{ background: b.color, letterSpacing: '0.5px', textTransform: 'uppercase', fontSize: '10px' }}
+                  >
+                    {b.category}
+                  </span>
+                  <span className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+                    ⏱ {b.time}
+                  </span>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-bold text-body mb-2 leading-snug">{b.title}</h3>
+                  <p className="text-muted text-sm leading-relaxed mb-4">{b.desc}</p>
+                  <span className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                    Read Article <span>→</span>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              to="/blogs"
+              className="inline-flex items-center gap-2 bg-primary text-white font-semibold px-8 py-3 rounded-input hover:bg-primary-light transition-all duration-300 hover:shadow-glow"
+            >
+              📚 Explore All Articles
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Experience the Journey */}
       <section className="section-padding bg-white">
+
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="font-display text-4xl font-bold text-body italic">Experience the Journey</h2>

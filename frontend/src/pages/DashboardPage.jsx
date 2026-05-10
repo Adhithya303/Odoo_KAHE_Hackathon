@@ -83,7 +83,7 @@ export default function DashboardPage() {
         <section>
           <div className="flex items-center justify-between mb-6">
             <h2 className="font-display text-2xl font-bold text-body">Your Trips</h2>
-            <Link to="/trips"><Button variant="secondary" className="text-sm px-4 py-2">+ New Trip</Button></Link>
+            <Link to="/trips/create"><Button variant="secondary" className="text-sm px-4 py-2">+ New Trip</Button></Link>
           </div>
           {trips.length === 0 ? (
             <div className="bg-white rounded-card border border-border p-12 text-center">

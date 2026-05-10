@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.middleware.error_handler import error_handler
 from app.routers import auth, destinations, recommendations, trips, budget, chatbot, external
+import app.models  # Import all models to register with SQLAlchemy
 
 app = FastAPI(title="WanderIQ API", version="1.0.0", description="AI-Powered Travel Planning Platform")
 
