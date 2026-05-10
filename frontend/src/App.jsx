@@ -33,6 +33,11 @@ import CreateTripPage from './pages/CreateTripPage';
 import ItineraryBuilderPage from './pages/ItineraryBuilderPage';
 import ExploreSearchPage from './pages/ExploreSearchPage';
 import BudgetBreakdownPage from './pages/BudgetBreakdownPage';
+import TripNotesPage from './pages/TripNotesPage';
+import PackingChecklistPage from './pages/PackingChecklistPage';
+import SharedItineraryPage from './pages/SharedItineraryPage';
+import ActivitySearchPage from './pages/ActivitySearchPage';
+import AdminDashboardPage from './pages/AdminDashboardPage';
 
 const qc = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 5 * 60 * 1000 } } });
 
@@ -104,6 +109,8 @@ export default function App() {
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/blogs/:slug" element={<BlogDetailPage />} />
             <Route path="/explore" element={<ExploreSearchPage />} />
+            <Route path="/activities" element={<ActivitySearchPage />} />
+            <Route path="/share/:tripId" element={<SharedItineraryPage />} />
 
             {/* Protected pages */}
             <Route element={<ProtectedRoute />}>
@@ -113,7 +120,10 @@ export default function App() {
               <Route path="/trips/:id" element={<TripDetailPage />} />
               <Route path="/trips/:id/build" element={<ItineraryBuilderPage />} />
               <Route path="/trips/:id/budget" element={<BudgetBreakdownPage />} />
+              <Route path="/trips/:id/notes" element={<TripNotesPage />} />
+              <Route path="/trips/:id/checklist" element={<PackingChecklistPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/admin" element={<AdminDashboardPage />} />
             </Route>
           </Route>
 

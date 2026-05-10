@@ -1,5 +1,5 @@
 """Trip ORM model — maps to trips, trip_stops tables."""
-from sqlalchemy import Column, Integer, String, Text, Date, Enum, DateTime, ForeignKey, Numeric
+from sqlalchemy import Column, Integer, String, Text, Date, Enum, DateTime, ForeignKey, Numeric, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database import Base

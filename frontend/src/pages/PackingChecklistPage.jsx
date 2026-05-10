@@ -29,7 +29,6 @@ function ProgressBar({ packed, total }) {
     </div>
   );
 }
-
 function ItemRow({ item, tripId, onUpdate, onDelete, aiHighlightIds }) {
   const [editing, setEditing] = useState(false);
   const [editName, setEditName] = useState(item.item_name);
@@ -138,6 +137,7 @@ function AddItemRow({ tripId, category, onAdd }) {
 
 export default function PackingChecklistPage() {
   const { id: tripId } = useParams();
+  const [viewMode, setViewMode] = useState('list');
   const [trip, setTrip] = useState(null);
   const [items, setItems] = useState([]);
   const [progress, setProgress] = useState({ packed: 0, total: 0, percentage: 0 });
@@ -250,6 +250,10 @@ export default function PackingChecklistPage() {
               {trip && <p className="text-white/70 text-sm">{trip.name}</p>}
             </div>
             <div className="flex gap-2 flex-shrink-0">
+              <div className="flex bg-white/10 rounded-input p-1 border border-white/20">
+                <button onClick={() => setViewMode('list')} className={`px-3 py-1.5 rounded-input text-sm font-medium transition-all ${viewMode === 'list' ? 'bg-white text-primary' : 'text-white'}`}>List</button>
+                <button onClick={() => setViewMode('calendar')} className={`px-3 py-1.5 rounded-input text-sm font-medium transition-all ${viewMode === 'calendar' ? 'bg-white text-primary' : 'text-white'}`}>Calendar</button>
+              </div>
               <button onClick={handleAiSuggest} disabled={aiLoading}
                 className="text-sm border border-white/50 text-white px-4 py-2 rounded-input hover:bg-white/10 transition-colors disabled:opacity-50">
                 🤖 AI Suggest
@@ -283,9 +287,26 @@ export default function PackingChecklistPage() {
 
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Items list */}
-          <div className="lg:col-span-2 space-y-4">
+        {viewMode === 'calendar' ? (
+          <div className="bg-white rounded-card shadow-card p-12 text-center border border-border">
+            <div className="text-6xl mb-6">🗓️</div>
+            <h3 className="font-display text-2xl font-bold text-body mb-2">Packing Schedule</h3>
+            <p className="text-muted mb-12">Visualize your trip days to plan your packing better.</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+              {Array.from({ length: duration || 0 }).map((_, i) => (
+                <div key={i} className="bg-sand p-6 rounded-card border border-border flex flex-col items-center gap-2">
+                  <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Day {i + 1}</span>
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-lg shadow-sm">
+                    👕
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Items list */}
+            <div className="lg:col-span-2 space-y-4">
             {items.length === 0 ? (
               <div className="bg-white rounded-card shadow-card p-12 text-center">
                 <div className="text-6xl mb-4">🎒</div>
@@ -380,9 +401,9 @@ export default function PackingChecklistPage() {
             </Link>
           </div>
         </div>
-      </div>
-
+      )}
       <style>{`@media print { .lg\\:col-span-1, nav, header { display: none !important; } }`}</style>
     </div>
+  </div>
   );
 }

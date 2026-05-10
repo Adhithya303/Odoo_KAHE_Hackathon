@@ -11,6 +11,7 @@ from app.models.user import User
 from app.models.trip import Trip
 from app.models.destination import Destination
 from app.models.community import CommunityPost, CommunityLike
+from app.models.admin import AdminLog
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
 
@@ -164,6 +165,31 @@ def update_user(user_id: int, req: AdminUserUpdate, user: User = Depends(get_cur
     return {"id": target.id, "role": target.role, "is_active": target.is_active}
 
 
+@router.patch("/users/{user_id}/toggle-active")
+def toggle_user_active(user_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _require_admin(user)
+    if user_id == user.id:
+        raise HTTPException(400, "Cannot deactivate yourself")
+    
+    target = db.query(User).filter(User.id == user_id).first()
+    if not target:
+        raise HTTPException(404, "User not found")
+        
+    target.is_active = not target.is_active
+    
+    # Log the action
+    log = AdminLog(
+        admin_id=user.id,
+        action="toggle_active",
+        target_id=str(user_id),
+        details=f"User {target.email} is_active set to {target.is_active}"
+    )
+    db.add(log)
+    db.commit()
+    
+    return {"id": target.id, "is_active": target.is_active}
+
+
 @router.delete("/users/{user_id}")
 def delete_user(user_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     _require_admin(user)
@@ -203,6 +229,7 @@ def get_trips(
             "total_budget": float(t.total_budget) if t.total_budget else None,
             "created_at": t.created_at.isoformat() if t.created_at else None,
             "user": {"id": owner.id, "first_name": owner.first_name, "last_name": owner.last_name, "email": owner.email} if owner else None,
+            "destination_count": len(t.stops)
         })
 
     return {"trips": result, "total": total, "page": page, "pages": max(1, -(-total // per_page))}

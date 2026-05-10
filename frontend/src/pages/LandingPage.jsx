@@ -414,8 +414,8 @@ export default function LandingPage() {
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/ChOhcHVqcIY"
-                title="TOP 50 • Most Beautiful Places in the World 8K ULTRA HD"
+                src="https://www.youtube.com/embed/YFhwEJosUsU"
+                title="Travel Experience Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen

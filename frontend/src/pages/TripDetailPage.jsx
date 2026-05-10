@@ -211,55 +211,73 @@ export default function TripDetailPage() {
                   </Link>
                 </div>
               ) : viewMode === 'calendar' ? (
-                <div className="bg-white rounded-card shadow-sm p-12 text-center border border-border">
-                  <div className="text-5xl mb-4">📅</div>
-                  <h3 className="font-display text-xl font-bold text-body">Simple Calendar View</h3>
-                  <p className="text-muted mt-2">Highlights dates from {formatDate(trip.start_date)} to {formatDate(trip.end_date)}</p>
-                  <div className="mt-8 grid grid-cols-7 gap-2 max-w-md mx-auto">
-                    {Array(31).fill(0).map((_, i) => (
-                      <div key={i} className={`aspect-square rounded-full flex items-center justify-center text-xs font-bold ${i+1 >= 15 && i+1 <= 22 ? 'bg-primary text-white shadow-sm' : 'bg-sand text-muted'}`}>
-                        {i + 1}
-                        {(i+1 === 16 || i+1 === 20) && <div className="absolute translate-y-3 w-1 h-1 bg-coral rounded-full" />}
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4">
+                  {itinerary.map((stop, idx) => (
+                    <div key={idx} className="flex flex-col gap-4">
+                      <div className="bg-[#1D9E75] text-white p-4 rounded-2xl shadow-sm text-center">
+                        <div className="text-xs font-bold opacity-80 uppercase tracking-widest">Day {idx + 1}</div>
+                        <div className="font-bold text-lg">{stop.title}</div>
+                        <div className="text-[10px] opacity-70">{formatDate(stop.start_date)}</div>
                       </div>
-                    ))}
-                  </div>
+                      <div className="flex-1 space-y-3">
+                        {stop.activities?.map((act, aIdx) => {
+                          const catColors = {
+                            transport: 'bg-blue-100 text-blue-700 border-blue-200',
+                            stay: 'bg-purple-100 text-purple-700 border-purple-200',
+                            food: 'bg-orange-100 text-orange-700 border-orange-200',
+                            activities: 'bg-teal-100 text-teal-700 border-teal-200'
+                          };
+                          const colorClass = catColors[act.category?.toLowerCase()] || 'bg-gray-100 text-gray-700 border-gray-200';
+                          
+                          return (
+                            <div key={aIdx} className={`p-3 rounded-xl border text-xs font-bold shadow-sm transition-transform hover:scale-105 cursor-default ${colorClass}`}>
+                              <div className="mb-1">🕒 {act.time || '10:00'}</div>
+                              <div>{act.name}</div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               ) : (
-                <div className="space-y-12">
-                  {itinerary.map((section, sIdx) => (
-                    <div key={sIdx} className="space-y-6">
-                      <div className="flex items-center gap-4">
-                        <div className="h-px flex-1 bg-border" />
-                        <h3 className="font-display text-xl font-bold text-body bg-sand px-4">
-                          {section.title} <span className="text-muted font-normal text-sm ml-2">({formatDate(section.start_date)})</span>
-                        </h3>
-                        <div className="h-px flex-1 bg-border" />
+                <div className="space-y-8">
+                  {itinerary.map((stop, sIdx) => (
+                    <div key={sIdx} className="bg-white rounded-3xl overflow-hidden border border-[#E0D8CC] shadow-sm">
+                      <div className="bg-[#F5F0E8] p-6 border-b border-[#E0D8CC] flex justify-between items-center">
+                        <div>
+                          <div className="text-[#1D9E75] text-xs font-bold uppercase tracking-widest mb-1">Day {sIdx + 1} • {formatDate(stop.start_date)}</div>
+                          <h3 className="text-2xl font-bold text-[#2C2C2A]">{stop.title}</h3>
+                        </div>
+                        <div className="bg-white px-4 py-2 rounded-xl text-sm font-bold text-gray-500 shadow-sm">
+                          {stop.activities?.length || 0} Activities
+                        </div>
                       </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {section.activities?.length > 0 ? section.activities.map((act, aIdx) => (
-                          <div key={aIdx} className="card bg-white p-5 hover:shadow-md transition-shadow flex gap-4 border border-border/50">
-                            <div className="w-12 h-12 rounded-card bg-sand flex items-center justify-center text-2xl flex-shrink-0">
-                              {getCategoryIcon(act.category)}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex justify-between items-start gap-2 mb-1">
-                                <h4 className="font-bold text-body truncate">{act.name}</h4>
-                                <span className="text-sm font-mono font-bold text-primary">{formatCurrency(act.cost)}</span>
+                      <div className="p-6">
+                        <div className="space-y-4">
+                          {stop.activities?.length > 0 ? stop.activities.map((act, aIdx) => (
+                            <div key={aIdx} className="flex items-center gap-6 p-4 rounded-2xl hover:bg-gray-50 transition-all border border-transparent hover:border-[#E0D8CC]">
+                              <div className="w-20 text-center">
+                                <div className="text-lg font-bold text-[#2C2C2A]">{act.time || '10:00'}</div>
+                                <div className="text-[10px] text-gray-400 font-bold uppercase">Start Time</div>
                               </div>
-                              <p className="text-xs text-muted font-medium uppercase tracking-wider flex items-center gap-2">
-                                <span>🕒 {act.time}</span>
-                                <span className="opacity-50">•</span>
-                                <span>{act.category}</span>
-                              </p>
-                              {act.description && <p className="text-sm text-body mt-2 line-clamp-2">{act.description}</p>}
+                              <div className="w-12 h-12 bg-[#F5F0E8] rounded-xl flex items-center justify-center text-xl">
+                                {getCategoryIcon(act.category)}
+                              </div>
+                              <div className="flex-1">
+                                <h4 className="font-bold text-[#2C2C2A] text-lg">{act.name}</h4>
+                                <p className="text-sm text-gray-500 line-clamp-1">{act.description}</p>
+                              </div>
+                              <div className="text-right">
+                                <div className="bg-teal-50 text-[#1D9E75] px-3 py-1 rounded-lg text-sm font-bold border border-teal-100">
+                                  {formatCurrency(act.cost)}
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        )) : (
-                          <div className="col-span-2 py-8 text-center bg-white/50 rounded-card border border-dashed border-border">
-                            <p className="text-sm text-muted italic">No activities planned for this stop.</p>
-                          </div>
-                        )}
+                          )) : (
+                            <div className="text-center py-10 text-gray-400 italic">No activities planned for this day.</div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}

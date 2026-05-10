@@ -2,11 +2,17 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.database import get_db
-from app.models.destination import Destination
+from app.models.destination import Destination, TripType
 from app.services.recommendation_service import destination_to_dict
 from typing import Optional, List
 
 router = APIRouter(prefix="/api/destinations", tags=["destinations"])
+
+
+@router.get("/metadata/trip-types")
+def get_trip_types(db: Session = Depends(get_db)):
+    types = db.query(TripType).all()
+    return {"trip_types": [{"id": t.id, "name": t.name} for t in types]}
 
 
 @router.get("")

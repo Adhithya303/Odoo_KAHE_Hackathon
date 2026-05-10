@@ -23,6 +23,7 @@ class TripUpdate(BaseModel):
     status: Optional[str] = None
     visibility: Optional[str] = None
     cover_photo_url: Optional[str] = None
+    add_stop: Optional[str] = None
 
 
 class TripResponse(BaseModel):

@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.middleware.error_handler import error_handler
 from app.routers import auth, destinations, recommendations, trips, budget, chatbot, external
-from app.routers import checklist, notes, community
+from app.routers import checklist, notes, community, public, activities, profile
 from app.routers import admin as admin_router
 
 # Ensure all models are imported so SQLAlchemy creates their tables
@@ -16,6 +16,7 @@ import app.models.community  # noqa
 import app.models.preference  # noqa
 import app.models.budget  # noqa
 import app.models.activity  # noqa
+import app.models.admin  # noqa
 
 app = FastAPI(title="WanderIQ API", version="1.0.0", description="AI-Powered Travel Planning Platform")
 
@@ -42,6 +43,9 @@ app.include_router(external.router)
 app.include_router(checklist.router)
 app.include_router(notes.router)
 app.include_router(community.router)
+app.include_router(public.router)
+app.include_router(activities.router)
+app.include_router(profile.router)
 app.include_router(admin_router.router)
 
 

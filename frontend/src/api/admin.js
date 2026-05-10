@@ -7,3 +7,4 @@ export const deleteAdminUser = (userId) => client.delete(`/api/admin/users/${use
 export const getAdminTrips = (params) => client.get('/api/admin/trips', { params });
 export const getAdminCommunity = (params) => client.get('/api/admin/community', { params });
 export const deleteAdminPost = (postId) => client.delete(`/api/admin/community/${postId}`);
+export const toggleAdminUserActive = (userId) => client.patch(`/api/admin/users/${userId}/toggle-active`);
