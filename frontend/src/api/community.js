@@ -9,3 +9,5 @@ export const toggleLike = (postId) => client.post(`/api/community/${postId}/like
 export const addComment = (postId, content) => client.post(`/api/community/${postId}/comments`, { content });
 export const deleteComment = (postId, commentId) => client.delete(`/api/community/${postId}/comments/${commentId}`);
 export const shareTrip = (tripId) => client.post(`/api/community/share-trip/${tripId}`);
+export const getChatMessages = (params) => client.get('/api/community/chat/messages', { params });
+export const sendChatMessage = (body) => client.post('/api/community/chat/messages', body);

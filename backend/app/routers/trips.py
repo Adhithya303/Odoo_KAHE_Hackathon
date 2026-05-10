@@ -57,6 +57,39 @@ def trip_to_dict(trip, include_stops=False):
     return data
 
 
+def _get_last_planned_date(trip: Trip) -> date:
+    candidate_dates = [d for d in [trip.start_date, trip.end_date] if d]
+
+    for stop in trip.stops or []:
+        if stop.arrival_date:
+            candidate_dates.append(stop.arrival_date)
+        if stop.departure_date:
+            candidate_dates.append(stop.departure_date)
+        for activity in stop.activities or []:
+            if activity.scheduled_date:
+                candidate_dates.append(activity.scheduled_date)
+
+    return max(candidate_dates) if candidate_dates else date.today()
+
+
+def _get_next_plan_date(trip: Trip) -> date:
+    return _get_last_planned_date(trip) + timedelta(days=1)
+
+
+def _extend_trip_dates_for_new_plan_item(trip: Trip, target_date: date) -> None:
+    if not trip.start_date or target_date < trip.start_date:
+        trip.start_date = target_date
+    if not trip.end_date or target_date > trip.end_date:
+        trip.end_date = target_date
+
+
+def _extend_stop_dates_for_new_plan_item(stop: TripStop, target_date: date) -> None:
+    if not stop.arrival_date or target_date < stop.arrival_date:
+        stop.arrival_date = target_date
+    if not stop.departure_date or target_date > stop.departure_date:
+        stop.departure_date = target_date
+
+
 # ═══════════════════════════════════════════════════════════
 #  Trip CRUD
 # ═══════════════════════════════════════════════════════════
@@ -136,16 +169,18 @@ def update_trip(trip_id: int, req: TripUpdate, user: User = Depends(get_current_
         stop_name = data.pop("add_stop")
         from app.models.destination import Destination
         dest = db.query(Destination).filter(Destination.name.ilike(stop_name)).first()
+        next_plan_date = _get_next_plan_date(trip)
         new_stop = TripStop(
             trip_id=trip.id,
             destination_id=dest.id if dest else None,
             custom_place=None if dest else stop_name,
             section_title=stop_name,
-            arrival_date=trip.start_date,
-            departure_date=trip.start_date,
+            arrival_date=next_plan_date,
+            departure_date=next_plan_date,
             sort_order=len(trip.stops)
         )
         db.add(new_stop)
+        _extend_trip_dates_for_new_plan_item(trip, next_plan_date)
 
     # Normalise visibility
     if "visibility" in data and data["visibility"]:
@@ -241,18 +276,20 @@ def add_stop(trip_id: int, req: TripStopCreate, user: User = Depends(get_current
     if not trip:
         raise HTTPException(404, "Trip not found")
 
+    next_plan_date = _get_next_plan_date(trip)
     stop = TripStop(
         trip_id=trip.id,
         destination_id=req.destination_id,
         custom_place=req.custom_place,
         section_title=req.section_title or req.custom_place,
         description=req.description,
-        arrival_date=req.arrival_date or trip.start_date,
-        departure_date=req.departure_date or trip.end_date,
+        arrival_date=req.arrival_date or next_plan_date,
+        departure_date=req.departure_date or req.arrival_date or next_plan_date,
         stop_budget=req.stop_budget,
         sort_order=len(trip.stops),
     )
     db.add(stop)
+    _extend_trip_dates_for_new_plan_item(trip, stop.departure_date or stop.arrival_date)
     db.commit()
     db.refresh(trip)
     return trip_to_dict(trip, include_stops=True)
@@ -423,8 +460,17 @@ def add_activity(trip_id: int, req: TripStopActivityCreate, user: User = Depends
     stop = db.query(TripStop).filter(TripStop.trip_id == trip_id).first()
     if not stop:
         raise HTTPException(400, "No stops found")
-    sa = TripStopActivity(stop_id=stop.id, activity_id=activity_id, scheduled_date=req.scheduled_date, notes=req.notes, sort_order=0)
+    scheduled_date = req.scheduled_date or _get_next_plan_date(trip)
+    sa = TripStopActivity(
+        stop_id=stop.id,
+        activity_id=activity_id,
+        scheduled_date=scheduled_date,
+        notes=req.notes,
+        sort_order=0,
+    )
     db.add(sa)
+    _extend_stop_dates_for_new_plan_item(stop, scheduled_date)
+    _extend_trip_dates_for_new_plan_item(trip, scheduled_date)
     db.commit()
     return {"id": sa.id, "message": "Activity added"}
 
@@ -463,12 +509,16 @@ def add_activity_to_stop(
         except ValueError:
             pass
 
+    target_date = scheduled_date or _get_next_plan_date(trip)
+
     sa = TripStopActivity(
         stop_id=stop_id, activity_id=activity_id,
-        scheduled_date=scheduled_date, start_time=parsed_time,
+        scheduled_date=target_date, start_time=parsed_time,
         notes=notes, sort_order=len(stop.activities)
     )
     db.add(sa)
+    _extend_stop_dates_for_new_plan_item(stop, target_date)
+    _extend_trip_dates_for_new_plan_item(trip, target_date)
     db.commit()
     db.refresh(stop)
     return {

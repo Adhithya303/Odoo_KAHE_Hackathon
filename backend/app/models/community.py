@@ -1,4 +1,4 @@
-"""Community ORM models — posts, likes, comments, saved trips."""
+"""Community ORM models — posts, likes, comments, chat, saved trips."""
 from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
@@ -10,10 +10,11 @@ class CommunityPost(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    trip_id = Column(Integer, ForeignKey("trips.id", ondelete="CASCADE"), nullable=False)
+    trip_id = Column(Integer, ForeignKey("trips.id", ondelete="CASCADE"), nullable=True)
     title = Column(String(255), nullable=False)
     body = Column(Text, nullable=True)
     cover_image_url = Column(String(500), nullable=True)
+    destination_tag = Column(String(100), nullable=True)
     views = Column(Integer, nullable=False, default=0)
     is_published = Column(Boolean, nullable=False, default=True)
     created_at = Column(DateTime, nullable=False, server_default=func.now())
@@ -43,6 +44,18 @@ class CommunityLike(Base):
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
     post_id = Column(Integer, ForeignKey("community_posts.id", ondelete="CASCADE"), primary_key=True)
     created_at = Column(DateTime, nullable=False, server_default=func.now())
+
+
+class CommunityChatMessage(Base):
+    __tablename__ = "community_chat_messages"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    room = Column(String(50), nullable=False, default="general")
+    content = Column(Text, nullable=False)
+    created_at = Column(DateTime, nullable=False, server_default=func.now())
+
+    user = relationship("User")
 
 
 class SavedTrip(Base):

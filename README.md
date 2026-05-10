@@ -33,6 +33,7 @@ Odoo_KAHE_Hackathon/
 |   |-- app/routers/       API routes
 |   |-- app/schemas/       Pydantic schemas
 |   |-- app/services/      Business logic + Gemini integrations
+|   |-- sql/               Extra SQL schema/patch files
 |   `-- ml/                ML recommendation service
 |-- traveloop_db_setup.sql Database schema
 `-- travel_recommendation_dataset.csv
@@ -87,10 +88,24 @@ VITE_GOOGLE_CLIENT_ID=your-google-client-id
 
 ## Database Setup
 
+Required SQL files:
+
+- Root schema: `traveloop_db_setup.sql`
+- Community chat patch: `backend/sql/community_chat_setup.sql`
+- Alternative full schemas already stored in repo:
+  `backend/sql/traveloop_full_schema.sql`
+  `backend/sql/schema_mysql_custom_itinerary.sql`
+
 From the project root:
 
 ```powershell
 mysql -u root -p < traveloop_db_setup.sql
+```
+
+Then apply the community chat SQL patch:
+
+```powershell
+mysql -u root -p traveloop < backend/sql/community_chat_setup.sql
 ```
 
 Then seed destinations:
@@ -100,7 +115,42 @@ cd backend
 python seed_from_csv.py
 ```
 
+Then seed community posts + chat:
+
+```powershell
+cd ..
+python backend/seed_community.py
+```
+
 If MySQL connection issues happen on Windows, prefer `127.0.0.1` instead of `localhost` in `DATABASE_URL`.
+
+## Env Placement
+
+Put backend settings in `backend/.env`:
+
+- `DATABASE_URL`
+- `SECRET_KEY`
+- `REFRESH_SECRET_KEY`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `GEMINI_API_KEY`
+- `GEMINI_CHAT_MODEL`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_REDIRECT_URL`
+- `FRONTEND_URL`
+- `ML_SERVICE_URL`
+- `CORS_ORIGINS`
+- `DEBUG`
+
+Put frontend settings in `frontend/.env`:
+
+- `VITE_API_BASE_URL`
+- `VITE_GOOGLE_CLIENT_ID`
+
+For local development, `GEMINI_CHAT_MODEL` belongs in `backend/.env` next to `GEMINI_API_KEY`.
 
 ## Run The Backend
 
@@ -198,6 +248,7 @@ uvicorn app.main:app --reload --port 8000
 - If frontend API calls fail, verify `VITE_API_BASE_URL=http://localhost:8000`.
 - Restart the frontend after changing `frontend/.env`.
 - Restart the backend after changing `backend/.env`.
+- If community chat is missing tables on an older database, run `backend/sql/community_chat_setup.sql` and then `python backend/seed_community.py`.
 
 ## Security Note
 

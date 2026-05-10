@@ -6,4 +6,4 @@ from .trip import Trip, TripStop, TripNote
 from .activity import Activity, TripStopActivity
 from .budget import ExpenseCategory, Expense
 from .checklist import ChecklistCategory, PackingChecklist
-from .community import CommunityPost, CommunityComment, CommunityLike, SavedTrip
+from .community import CommunityPost, CommunityComment, CommunityLike, CommunityChatMessage, SavedTrip

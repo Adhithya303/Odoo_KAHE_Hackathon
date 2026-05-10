@@ -24,6 +24,7 @@ import ContinentPage from './pages/ContinentPage';
 import AboutPage from './pages/AboutPage';
 import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
+import CommunityPage from './pages/CommunityPage';
 import TrendsPage from './pages/TrendsPage';
 import DomesticTrendsPage from './pages/DomesticTrendsPage';
 import InternationalTrendsPage from './pages/InternationalTrendsPage';
@@ -106,6 +107,7 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/community" element={<CommunityPage />} />
             <Route path="/trends" element={<TrendsPage />} />
             <Route path="/trends/domestic" element={<DomesticTrendsPage />} />
             <Route path="/trends/international" element={<InternationalTrendsPage />} />

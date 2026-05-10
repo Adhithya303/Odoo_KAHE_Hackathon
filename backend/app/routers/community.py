@@ -1,16 +1,40 @@
-"""Community Feed router — posts, likes, comments, share trip."""
+"""Community Feed router — posts, likes, comments, chat, share trip."""
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
+from sqlalchemy import text
+from sqlalchemy.exc import SQLAlchemyError
 from typing import Optional
 from pydantic import BaseModel
 from app.database import get_db
 from app.dependencies import get_current_user, get_optional_user
 from app.models.user import User
 from app.models.trip import Trip
-from app.models.community import CommunityPost, CommunityComment, CommunityLike
+from app.models.community import CommunityPost, CommunityComment, CommunityLike, CommunityChatMessage
 
 router = APIRouter(prefix="/api/community", tags=["community"])
+
+
+def _ensure_community_schema(db: Session) -> None:
+    db.execute(text("""
+        CREATE TABLE IF NOT EXISTS community_chat_messages (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            user_id INT UNSIGNED NOT NULL,
+            room VARCHAR(50) NOT NULL DEFAULT 'general',
+            content TEXT NOT NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            INDEX idx_room_created (room, created_at)
+        )
+    """))
+
+    has_destination_tag = db.execute(text("SHOW COLUMNS FROM community_posts LIKE 'destination_tag'")).first()
+    if not has_destination_tag:
+        try:
+            db.execute(text("ALTER TABLE community_posts ADD COLUMN destination_tag VARCHAR(100) NULL"))
+        except SQLAlchemyError:
+            db.rollback()
+    db.commit()
 
 
 def _author_dict(user: User) -> dict:
@@ -57,12 +81,28 @@ class CommentRequest(BaseModel):
     content: str
 
 
+class ChatMessageRequest(BaseModel):
+    content: str
+    room: Optional[str] = "general"
+
+
+def _chat_message_dict(message: CommunityChatMessage) -> dict:
+    return {
+        "id": message.id,
+        "room": message.room,
+        "content": message.content,
+        "created_at": message.created_at.isoformat() if message.created_at else None,
+        "author": _author_dict(message.user),
+    }
+
+
 @router.get("")
 def get_feed(
     sort: str = Query(default="newest"), search: Optional[str] = Query(default=None),
     page: int = Query(default=1, ge=1), per_page: int = Query(default=12, ge=1, le=50),
     current_user: Optional[User] = Depends(get_optional_user), db: Session = Depends(get_db),
 ):
+    _ensure_community_schema(db)
     query = db.query(CommunityPost).filter(CommunityPost.is_published == True)
     if search:
         query = query.filter(CommunityPost.title.ilike(f"%{search}%") | CommunityPost.destination_tag.ilike(f"%{search}%"))
@@ -79,8 +119,44 @@ def get_feed(
     return {"posts": [_post_dict(p, uid, db) for p in posts], "total": total, "page": page, "pages": max(1, -(-total // per_page))}
 
 
+@router.get("/chat/messages")
+def get_chat_messages(
+    room: str = Query(default="general"),
+    limit: int = Query(default=50, ge=1, le=200),
+    db: Session = Depends(get_db),
+):
+    _ensure_community_schema(db)
+    messages = (
+        db.query(CommunityChatMessage)
+        .filter(CommunityChatMessage.room == room)
+        .order_by(desc(CommunityChatMessage.created_at))
+        .limit(limit)
+        .all()
+    )
+    return {"messages": [_chat_message_dict(message) for message in reversed(messages)]}
+
+
+@router.post("/chat/messages")
+def send_chat_message(req: ChatMessageRequest, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
+    content = (req.content or "").strip()
+    if not content:
+        raise HTTPException(400, "Message cannot be empty")
+
+    message = CommunityChatMessage(
+        user_id=user.id,
+        room=(req.room or "general").strip() or "general",
+        content=content,
+    )
+    db.add(message)
+    db.commit()
+    db.refresh(message)
+    return _chat_message_dict(message)
+
+
 @router.get("/{post_id}")
 def get_post(post_id: int, current_user: Optional[User] = Depends(get_optional_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
     post = db.query(CommunityPost).filter(CommunityPost.id == post_id).first()
     if not post:
         raise HTTPException(404, "Post not found")
@@ -95,6 +171,7 @@ def get_post(post_id: int, current_user: Optional[User] = Depends(get_optional_u
 
 @router.post("")
 def create_post(req: PostCreateRequest, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
     if req.trip_id:
         trip = db.query(Trip).filter(Trip.id == req.trip_id, Trip.user_id == user.id).first()
         if not trip:
@@ -106,6 +183,7 @@ def create_post(req: PostCreateRequest, user: User = Depends(get_current_user), 
 
 @router.put("/{post_id}")
 def update_post(post_id: int, req: PostUpdateRequest, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
     post = db.query(CommunityPost).filter(CommunityPost.id == post_id, CommunityPost.user_id == user.id).first()
     if not post:
         raise HTTPException(404, "Post not found or not authorised")
@@ -119,6 +197,7 @@ def update_post(post_id: int, req: PostUpdateRequest, user: User = Depends(get_c
 
 @router.delete("/{post_id}")
 def delete_post(post_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
     post = db.query(CommunityPost).filter(CommunityPost.id == post_id, CommunityPost.user_id == user.id).first()
     if not post:
         raise HTTPException(404, "Post not found or not authorised")
@@ -128,6 +207,7 @@ def delete_post(post_id: int, user: User = Depends(get_current_user), db: Sessio
 
 @router.post("/{post_id}/like")
 def toggle_like(post_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
     post = db.query(CommunityPost).filter(CommunityPost.id == post_id).first()
     if not post:
         raise HTTPException(404, "Post not found")
@@ -143,6 +223,7 @@ def toggle_like(post_id: int, user: User = Depends(get_current_user), db: Sessio
 
 @router.post("/{post_id}/comments")
 def add_comment(post_id: int, req: CommentRequest, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
     post = db.query(CommunityPost).filter(CommunityPost.id == post_id).first()
     if not post:
         raise HTTPException(404, "Post not found")
@@ -153,6 +234,7 @@ def add_comment(post_id: int, req: CommentRequest, user: User = Depends(get_curr
 
 @router.delete("/{post_id}/comments/{comment_id}")
 def delete_comment(post_id: int, comment_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
     comment = db.query(CommunityComment).filter(CommunityComment.id == comment_id, CommunityComment.post_id == post_id, CommunityComment.user_id == user.id).first()
     if not comment:
         raise HTTPException(404, "Comment not found or not authorised")
@@ -162,6 +244,7 @@ def delete_comment(post_id: int, comment_id: int, user: User = Depends(get_curre
 
 @router.post("/share-trip/{trip_id}")
 def share_trip(trip_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    _ensure_community_schema(db)
     trip = db.query(Trip).filter(Trip.id == trip_id, Trip.user_id == user.id).first()
     if not trip:
         raise HTTPException(404, "Trip not found or not authorised")
