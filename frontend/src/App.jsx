@@ -16,6 +16,8 @@ import MyTripsPage from './pages/MyTripsPage';
 import TripDetailPage from './pages/TripDetailPage';
 import TravelTipsPage from './pages/TravelTipsPage';
 import ProfilePage from './pages/ProfilePage';
+import ExperienceDetailPage from './pages/ExperienceDetailPage';
+import ContinentPage from './pages/ContinentPage';
 
 const qc = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 5 * 60 * 1000 } } });
 
@@ -73,6 +75,8 @@ export default function App() {
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/destinations/:id" element={<DestinationDetailPage />} />
             <Route path="/tips" element={<TravelTipsPage />} />
+            <Route path="/experiences/:slug" element={<ExperienceDetailPage />} />
+            <Route path="/continents/:slug" element={<ContinentPage />} />
 
             {/* Protected pages */}
             <Route element={<ProtectedRoute />}>
