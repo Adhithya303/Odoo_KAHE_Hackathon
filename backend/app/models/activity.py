@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, Text, Enum, DateTime, Date, Time
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database import Base
+from app.models.trip import TripStop
 
 
 class Activity(Base):

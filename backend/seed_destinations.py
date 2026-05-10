@@ -7,6 +7,11 @@ from sqlalchemy.orm import sessionmaker
 from app.config import settings
 from app.models.destination import Destination, TripType, GroupType, Month
 from app.models.preference import UserPreference
+from app.models.trip import Trip, TripStop, TripNote
+from app.models.budget import Expense, ExpenseCategory
+from app.models.activity import Activity, TripStopActivity
+from app.models.checklist import PackingChecklist, ChecklistCategory
+from app.models.community import CommunityPost, CommunityComment
 
 # Destination data with images (Unsplash/Wikimedia URLs)
 DESTINATIONS_DATA = [
@@ -207,11 +212,11 @@ def seed_database():
                         dest.trip_types.append(tt)
 
         session.commit()
-        print(f"✓ Seeded {len(DESTINATIONS_DATA)} destinations with images")
+        print(f"[*] Seeded {len(DESTINATIONS_DATA)} destinations with images")
         session.close()
     except Exception as e:
         session.rollback()
-        print(f"✗ Error seeding database: {e}")
+        print(f"[!] Error seeding database: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

@@ -1,6 +1,9 @@
 export const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 export const LEAFLET_TILE_URL = import.meta.env.VITE_LEAFLET_TILE_URL || 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
+// Fallback image for broken/missing destination images
+export const FALLBACK_IMAGE_URL = 'https://images.unsplash.com/photo-1503152394-c571994fd383?w=500';
+
 export const VIBES = ['Adventure', 'Beach', 'Cultural', 'Luxury', 'Nature', 'Pilgrimage', 'Relaxation', 'Wildlife'];
 export const GROUP_TYPES = ['Solo', 'Couple', 'Friends', 'Family'];
 export const SCOPES = ['Domestic', 'International'];

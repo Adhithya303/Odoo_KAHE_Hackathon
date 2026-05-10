@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Badge from '../common/Badge';
-import { getDestImage } from '../../utils/constants';
+import { getDestImage, FALLBACK_IMAGE_URL } from '../../utils/constants';
 import { formatCurrency } from '../../utils/formatters';
 
 export default function DestinationCard({ destination, className = '' }) {
@@ -12,7 +12,7 @@ export default function DestinationCard({ destination, className = '' }) {
   return (
     <Link to={`/destinations/${id}`} className={`card group cursor-pointer block ${className}`}>
       <div className="relative h-48 overflow-hidden">
-        <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        <img src={image} alt={name} onError={(e) => { e.target.src = FALLBACK_IMAGE_URL; }} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute top-3 right-3">
           <Badge variant={trip_scope === 'International' ? 'coral' : 'green'}>{trip_scope}</Badge>

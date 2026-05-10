@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, Text, Enum, DateTime, Table, For
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database import Base
+from app.models.activity import Activity
 
 # Junction tables
 destination_trip_types = Table(
