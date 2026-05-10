@@ -1,5 +1,6 @@
 """Recommendations router — personalized and query-based."""
 from fastapi import APIRouter, Depends
+from sqlalchemy import case, func
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.dependencies import get_current_user
@@ -76,6 +77,16 @@ async def get_onboarding_recommendations(user: User = Depends(get_current_user),
     from app.models.destination import TripType
 
     pref = db.query(UserPreference).filter(UserPreference.user_id == user.id).first()
+    normalized_country = user.country.strip().lower() if user.country else None
+
+    def apply_country_priority(query):
+        if not normalized_country:
+            return query.order_by(Destination.popularity_score.desc())
+        country_match_order = case(
+            (func.lower(Destination.country) == normalized_country, 0),
+            else_=1,
+        )
+        return query.order_by(country_match_order, Destination.popularity_score.desc())
 
     # 1. Top 5 personalized picks using ML service
     top_5_picks = []
@@ -103,7 +114,7 @@ async def get_onboarding_recommendations(user: User = Depends(get_current_user),
             pass
 
     if not top_5_picks:
-        top_5_picks = db.query(Destination).order_by(Destination.popularity_score.desc()).limit(5).all()
+        top_5_picks = apply_country_priority(db.query(Destination)).limit(5).all()
 
     # 2. Destinations by trip type
     by_trip_type = {}
@@ -126,8 +137,8 @@ async def get_onboarding_recommendations(user: User = Depends(get_current_user),
     # 3. Destinations by scope
     by_scope = {}
     for scope in ["Domestic", "International"]:
-        dests = db.query(Destination).filter(Destination.trip_scope == scope).order_by(
-            Destination.popularity_score.desc()
+        dests = apply_country_priority(
+            db.query(Destination).filter(Destination.trip_scope == scope)
         ).limit(5).all()
         if dests:
             by_scope[scope] = dests
@@ -139,9 +150,9 @@ async def get_onboarding_recommendations(user: User = Depends(get_current_user),
     for dests in by_scope.values():
         shown_ids.update(d.id for d in dests)
 
-    other_trending = db.query(Destination).filter(
-        ~Destination.id.in_(shown_ids)
-    ).order_by(Destination.popularity_score.desc()).limit(10).all()
+    other_trending = apply_country_priority(
+        db.query(Destination).filter(~Destination.id.in_(shown_ids))
+    ).limit(10).all()
 
     # Convert to response
     return OnboardingRecommendationsResponse(

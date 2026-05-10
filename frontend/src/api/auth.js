@@ -6,3 +6,7 @@ export const updateMe = (data) => api.put('/api/auth/me', data);
 export const savePreferences = (data) => api.post('/api/auth/me/preferences', data);
 export const getPreferences = () => api.get('/api/auth/me/preferences');
 export const logout = (refresh_token) => api.post('/api/auth/logout', { refresh_token });
+export const verifyOtp = (data) => api.post('/api/auth/verify-otp', data);
+export const forgotPassword = (data) => api.post('/api/auth/forgot-password', data);
+export const resetPassword = (data) => api.post('/api/auth/reset-password', data);
+export const googleLogin = (data) => api.post('/api/auth/google', data);

@@ -52,3 +52,26 @@ class ReorderRequest(BaseModel):
 
 class OptimizeRouteRequest(BaseModel):
     stop_id: int
+
+
+# ── Schemas for saving a full itinerary from the builder ──
+
+class ItineraryActivitySave(BaseModel):
+    name: str
+    time: Optional[str] = "10:00"
+    cost: Optional[float] = 0
+    category: Optional[str] = "Sightseeing"
+    description: Optional[str] = None
+
+
+class ItinerarySectionSave(BaseModel):
+    title: str
+    description: Optional[str] = None
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    budget_allocated: Optional[float] = 0
+    activities: List[ItineraryActivitySave] = []
+
+
+class ItinerarySaveRequest(BaseModel):
+    sections: List[ItinerarySectionSave]

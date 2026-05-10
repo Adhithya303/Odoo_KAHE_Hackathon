@@ -129,7 +129,7 @@ export default function DestinationDetailPage() {
                           </li>
                         ))}
                       </ul>
-                      <Link to="/trips">
+                      <Link to={`/trips/create?destination_id=${dest.id}&destination_name=${encodeURIComponent(dest.name)}`}>
                         <Button variant={i === 1 ? 'primary' : 'ghost'} className="w-full text-sm">Choose {pkg.name}</Button>
                       </Link>
                     </div>
@@ -196,7 +196,7 @@ export default function DestinationDetailPage() {
             </div>
 
             {/* CTA */}
-            <Link to={`/trips`} className="block">
+            <Link to={`/trips/create?destination_id=${dest.id}&destination_name=${encodeURIComponent(dest.name)}`} className="block">
               <Button className="w-full text-base py-4">Plan This Trip →</Button>
             </Link>
           </div>

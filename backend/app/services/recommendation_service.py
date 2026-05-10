@@ -1,18 +1,30 @@
 """Recommendation service — ML-powered destination recommendations."""
 from sqlalchemy.orm import Session
+from sqlalchemy import case, func
 from app.models.destination import Destination, RecommendationProfile
 from app.models.preference import UserPreference
+from app.models.user import User
 from typing import List, Optional
 import httpx
 from app.config import settings
 import json
 
 
+def _normalize_country(value: Optional[str]) -> Optional[str]:
+    if not value:
+        return None
+    normalized = value.strip().lower()
+    return normalized or None
+
+
 async def get_recommendations_for_user(db: Session, user_id: int, limit: int = 10) -> List[dict]:
     """Get personalized recommendations based on user preferences."""
+    user = db.query(User).filter(User.id == user_id).first()
+    user_country = _normalize_country(user.country) if user else None
+
     pref = db.query(UserPreference).filter(UserPreference.user_id == user_id).first()
     if not pref:
-        return await get_trending_destinations(db, limit)
+        return await get_trending_destinations(db, limit, user_country=user_country)
 
     # Build preference text for ML embedding
     trip_types = [t.name for t in pref.trip_types] if pref.trip_types else []
@@ -27,6 +39,8 @@ async def get_recommendations_for_user(db: Session, user_id: int, limit: int = 1
         query_parts.append(f"{pref.trip_scope.lower()} destinations")
     if pref.min_budget and pref.max_budget:
         query_parts.append(f"budget ₹{pref.min_budget} to ₹{pref.max_budget}")
+    if user_country:
+        query_parts.append(f"in or near {user_country.title()}")
 
     query_text = ", ".join(query_parts) if query_parts else "popular travel destinations"
 
@@ -45,15 +59,27 @@ async def get_recommendations_for_user(db: Session, user_id: int, limit: int = 1
                     if dest:
                         results.append(destination_to_dict(dest))
                 if results:
+                    if user_country:
+                        results.sort(
+                            key=lambda d: (
+                                0 if _normalize_country(d.get("country")) == user_country else 1,
+                                -(d.get("popularity_score") or 0),
+                            )
+                        )
                     return results
     except Exception:
         pass
 
     # Fallback: filter from database directly
-    return await get_filtered_recommendations(db, pref, limit)
+    return await get_filtered_recommendations(db, pref, limit, user_country=user_country)
 
 
-async def get_filtered_recommendations(db: Session, pref: UserPreference, limit: int) -> List[dict]:
+async def get_filtered_recommendations(
+    db: Session,
+    pref: UserPreference,
+    limit: int,
+    user_country: Optional[str] = None,
+) -> List[dict]:
     """Fallback recommendations using database filtering."""
     query = db.query(Destination)
 
@@ -65,7 +91,15 @@ async def get_filtered_recommendations(db: Session, pref: UserPreference, limit:
     if pref.max_budget:
         query = query.filter(Destination.avg_max_budget <= pref.max_budget * 1.5)
 
-    destinations = query.order_by(Destination.popularity_score.desc()).limit(limit).all()
+    if user_country:
+        country_match_order = case(
+            (func.lower(Destination.country) == user_country, 0),
+            else_=1,
+        )
+        destinations = query.order_by(country_match_order, Destination.popularity_score.desc()).limit(limit).all()
+    else:
+        destinations = query.order_by(Destination.popularity_score.desc()).limit(limit).all()
+
     return [destination_to_dict(d) for d in destinations]
 
 
@@ -98,11 +132,19 @@ async def search_by_query(db: Session, query: str, limit: int = 10) -> List[dict
     return [destination_to_dict(d) for d in destinations]
 
 
-async def get_trending_destinations(db: Session, limit: int = 10) -> List[dict]:
+async def get_trending_destinations(db: Session, limit: int = 10, user_country: Optional[str] = None) -> List[dict]:
     """Get trending destinations by popularity score."""
-    destinations = db.query(Destination).order_by(
-        Destination.popularity_score.desc()
-    ).limit(limit).all()
+    query = db.query(Destination)
+    if user_country:
+        country_match_order = case(
+            (func.lower(Destination.country) == user_country, 0),
+            else_=1,
+        )
+        query = query.order_by(country_match_order, Destination.popularity_score.desc())
+    else:
+        query = query.order_by(Destination.popularity_score.desc())
+
+    destinations = query.limit(limit).all()
     return [destination_to_dict(d) for d in destinations]
 
 

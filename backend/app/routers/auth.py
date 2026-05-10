@@ -1,17 +1,20 @@
 """Auth router — registration, login, token refresh, password reset."""
 from fastapi import APIRouter, Depends, HTTPException, status, Response
+import httpx
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.schemas.auth import (
     RegisterRequest, LoginRequest, TokenResponse, RefreshRequest,
     ForgotPasswordRequest, ResetPasswordRequest, UserResponse, UserUpdateRequest,
-    ChangePasswordRequest,
+    ChangePasswordRequest, VerifyOtpRequest, GoogleAuthRequest,
 )
 from app.services.auth_service import (
     register_user, authenticate_user, create_access_token, create_refresh_token,
     verify_refresh_token, revoke_refresh_token, hash_password, verify_password,
+    verify_user_otp, forgot_password as service_forgot_password, reset_password as service_reset_password,
 )
 from app.dependencies import get_current_user
+from app.config import settings
 from app.models.user import User
 from app.models.preference import UserPreference
 from app.models.destination import TripType, GroupType
@@ -61,6 +64,62 @@ def login(req: LoginRequest, db: Session = Depends(get_db)):
     access_token = create_access_token(user.id)
     refresh_token = create_refresh_token(user.id, db)
 
+    return TokenResponse(
+        access_token=access_token,
+        refresh_token=refresh_token,
+        user=UserResponse.model_validate(user),
+    )
+
+
+@router.post("/verify-otp")
+def verify_otp(req: VerifyOtpRequest, db: Session = Depends(get_db)):
+    success = verify_user_otp(db, req.email, req.otp)
+    if not success:
+        raise HTTPException(status_code=400, detail="Invalid or expired OTP")
+    return {"message": "Email verified successfully"}
+
+
+@router.post("/forgot-password")
+def forgot_password_route(req: ForgotPasswordRequest, db: Session = Depends(get_db)):
+    success = service_forgot_password(db, req.email)
+    if not success:
+        raise HTTPException(status_code=404, detail="Email not found")
+    return {"message": "OTP sent to email"}
+
+
+@router.post("/reset-password")
+def reset_password_route(req: ResetPasswordRequest, db: Session = Depends(get_db)):
+    success = service_reset_password(db, req.email, req.otp, req.new_password)
+    if not success:
+        raise HTTPException(status_code=400, detail="Invalid or expired OTP")
+    return {"message": "Password reset successfully"}
+
+
+@router.post("/google", response_model=TokenResponse)
+async def google_login(req: GoogleAuthRequest, db: Session = Depends(get_db)):
+    # Verify token with Google
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(f"https://oauth2.googleapis.com/tokeninfo?id_token={req.id_token}")
+        if resp.status_code != 200:
+            raise HTTPException(status_code=401, detail="Invalid Google token")
+        payload = resp.json()
+
+    if settings.GOOGLE_CLIENT_ID and payload.get("aud") != settings.GOOGLE_CLIENT_ID:
+        raise HTTPException(status_code=401, detail="Google token audience mismatch")
+        
+    email = payload.get("email")
+    if not email:
+        raise HTTPException(status_code=400, detail="Email not found in Google token")
+        
+    # Check if user exists
+    user = db.query(User).filter(User.email == email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Account does not exist. Please sign up first.")
+        
+    # Log user in
+    access_token = create_access_token(user.id)
+    refresh_token = create_refresh_token(user.id, db)
+    
     return TokenResponse(
         access_token=access_token,
         refresh_token=refresh_token,

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getTrip, getItinerary, generateItinerary } from '../api/trips';
+import { getTrip, getItinerary, generateItinerary, updateTrip } from '../api/trips';
 import { getBudget } from '../api/budget';
 import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
@@ -18,6 +18,7 @@ export default function TripDetailPage() {
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'calendar'
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
 
   useEffect(() => {
     const load = async () => {
@@ -33,9 +34,22 @@ export default function TripDetailPage() {
   }, [id]);
 
   const handleShare = () => {
-    const url = `${window.location.origin}/trips/${id}/view`;
-    navigator.clipboard.writeText(url);
+    setShowShareModal(true);
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
     toast.success('Link copied to clipboard!');
+  };
+
+  const handleMakePublic = async () => {
+    try {
+      await updateTrip(id, { visibility: 'public' });
+      setTrip({ ...trip, visibility: 'public' });
+      toast.success('Trip is now public!');
+    } catch (err) {
+      toast.error('Failed to update visibility');
+    }
   };
 
   const handleExportPDF = () => {
@@ -356,6 +370,75 @@ export default function TripDetailPage() {
           )}
         </div>
       </div>
+
+      {/* Share Modal */}
+      {showShareModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-card shadow-card max-w-md w-full p-6 animate-fade-in">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-display text-xl font-bold text-body">Share Trip</h3>
+              <button onClick={() => setShowShareModal(false)} className="text-muted hover:text-body text-xl">✕</button>
+            </div>
+            
+            <div className="mb-6">
+              <p className="text-sm text-muted mb-2">Current Visibility:</p>
+              <div className="flex items-center gap-2">
+                <Badge variant={trip.visibility === 'public' ? 'green' : 'warning'} className="capitalize">
+                  {trip.visibility === 'public' ? '🌐 Public' : '🔒 Private'}
+                </Badge>
+                <p className="text-xs text-muted">
+                  {trip.visibility === 'public' 
+                    ? 'Anyone with the link can view this trip.' 
+                    : 'Only you can view this trip unless you make it public.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {/* Option 1: Copy Share Link */}
+              <div className="p-4 bg-sand/50 rounded-card border border-border">
+                <h4 className="font-bold text-body mb-1 text-sm">Sharable Link</h4>
+                <p className="text-xs text-muted mb-3">Copy the link to the shared itinerary page.</p>
+                <div className="flex gap-2">
+                  <input 
+                    type="text" 
+                    readOnly 
+                    value={`${window.location.origin}/share/${id}`} 
+                    className="flex-1 text-xs bg-white border border-border rounded-input px-3 py-2 outline-none"
+                  />
+                  <Button 
+                    onClick={() => copyToClipboard(`${window.location.origin}/share/${id}`)} 
+                    variant="secondary" 
+                    className="text-xs py-2"
+                  >
+                    📋 Copy
+                  </Button>
+                </div>
+              </div>
+
+              {/* Option 2: Make Public (if private) */}
+              {trip.visibility !== 'public' && (
+                <div className="p-4 bg-primary/5 rounded-card border border-primary/10">
+                  <h4 className="font-bold text-primary mb-1 text-sm">Make Public</h4>
+                  <p className="text-xs text-muted mb-3">Make this trip public so anyone with the link can access it.</p>
+                  <Button 
+                    onClick={handleMakePublic} 
+                    className="w-full text-xs py-2"
+                  >
+                    🌐 Make Trip Public
+                  </Button>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-6 flex justify-end">
+              <Button onClick={() => setShowShareModal(false)} variant="ghost" className="text-sm">
+                Close
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

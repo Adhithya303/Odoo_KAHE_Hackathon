@@ -4,6 +4,18 @@ from typing import Optional, List
 from datetime import date
 
 
+class TripStopCreate(BaseModel):
+    destination_id: Optional[int] = None
+    custom_place: Optional[str] = None
+    section_title: Optional[str] = None
+    description: Optional[str] = None
+    arrival_date: Optional[date] = None
+    departure_date: Optional[date] = None
+    stop_budget: Optional[float] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+
+
 class TripCreate(BaseModel):
     name: str = Field(..., min_length=1, max_length=255)
     description: Optional[str] = None
@@ -11,7 +23,11 @@ class TripCreate(BaseModel):
     end_date: date
     total_budget: Optional[float] = None
     trip_scope: str = "Domestic"
+    visibility: str = "private"
+    cover_photo_url: Optional[str] = None
     destination_id: Optional[int] = None
+    destination_name: Optional[str] = None
+    stops: Optional[List[TripStopCreate]] = None
 
 
 class TripUpdate(BaseModel):
@@ -43,18 +59,6 @@ class TripResponse(BaseModel):
 
     class Config:
         from_attributes = True
-
-
-class TripStopCreate(BaseModel):
-    destination_id: Optional[int] = None
-    custom_place: Optional[str] = None
-    section_title: Optional[str] = None
-    description: Optional[str] = None
-    arrival_date: Optional[date] = None
-    departure_date: Optional[date] = None
-    stop_budget: Optional[float] = None
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
 
 
 class TripStopResponse(BaseModel):

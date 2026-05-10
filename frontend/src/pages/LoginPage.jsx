@@ -1,17 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { login as loginApi } from '../api/auth';
+import { googleLogin, login as loginApi } from '../api/auth';
 import useAuthStore from '../store/authStore';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import toast from 'react-hot-toast';
+import { setupGoogleButton } from '../utils/googleAuth';
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const googleBtnRef = useRef(null);
   const { setUser, setTokens } = useAuthStore();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const initGoogle = async () => {
+      try {
+        await setupGoogleButton({
+          clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+          container: googleBtnRef.current,
+          onCredential: async (idToken) => {
+            try {
+              const { data } = await googleLogin({ id_token: idToken });
+              setTokens(data.access_token, data.refresh_token);
+              setUser(data.user);
+              toast.success(`Welcome back, ${data.user.first_name}!`);
+              navigate('/dashboard');
+            } catch (err) {
+              toast.error(err.response?.data?.detail || 'Google sign-in failed');
+            }
+          },
+        });
+      } catch (err) {
+        console.error('Google setup failed', err);
+      }
+    };
+
+    initGoogle();
+  }, [navigate, setTokens, setUser]);
 
   const validate = () => {
     const e = {};
@@ -75,11 +103,21 @@ export default function LoginPage() {
               <label className="flex items-center gap-2 text-muted">
                 <input type="checkbox" className="rounded border-border text-primary focus:ring-primary" /> Remember me
               </label>
-              <a href="#" className="text-primary hover:text-primary-light font-medium">Forgot password?</a>
+              <Link to="/forgot-password" className="text-primary hover:text-primary-light font-medium">Forgot password?</Link>
             </div>
 
             <Button type="submit" loading={loading} className="w-full text-base py-3.5">Sign In</Button>
           </form>
+
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-border"></div></div>
+            <div className="relative flex justify-center text-sm"><span className="px-2 bg-sand text-muted">Or continue with</span></div>
+          </div>
+
+          <div ref={googleBtnRef} className="w-full min-h-[44px] flex items-center justify-center" />
+          {!import.meta.env.VITE_GOOGLE_CLIENT_ID && (
+            <p className="text-xs text-red-600 mt-2 text-center">Missing VITE_GOOGLE_CLIENT_ID in frontend .env</p>
+          )}
 
           <p className="text-center text-sm text-muted mt-6">
             Don't have an account? <Link to="/signup" className="text-primary font-semibold hover:text-primary-light">Sign Up</Link>

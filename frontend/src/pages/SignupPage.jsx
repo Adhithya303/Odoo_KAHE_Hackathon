@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { register as registerApi } from '../api/auth';
+import { googleLogin, register as registerApi } from '../api/auth';
 import useAuthStore from '../store/authStore';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import toast from 'react-hot-toast';
+import { setupGoogleButton } from '../utils/googleAuth';
 
 const TRIP_TYPES = ['Adventure', 'Beach', 'Cultural', 'Nature', 'Relaxation', 'Luxury', 'Pilgrimage', 'Wildlife', 'Romantic', 'Family'];
 
@@ -21,6 +22,8 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false);
   const { setUser, setTokens } = useAuthStore();
   const navigate = useNavigate();
+
+
 
   const getPasswordStrength = (pw) => {
     let s = 0;
@@ -77,11 +80,9 @@ export default function SignupPage() {
     
     setLoading(true);
     try {
-      const { data } = await registerApi(form);
-      setTokens(data.access_token, data.refresh_token);
-      setUser(data.user);
-      toast.success('Account created! Redirecting to dashboard...');
-      navigate('/dashboard');
+      await registerApi(form);
+      toast.success('Account created! Please verify your email.');
+      navigate('/verify-otp', { state: { email: form.email } });
     } catch (err) {
       const msg = err.response?.data?.detail || 'Registration failed';
       toast.error(typeof msg === 'string' ? msg : 'Please check your inputs');
@@ -236,6 +237,8 @@ export default function SignupPage() {
           <p className="text-center text-sm text-gray-600 mt-6">
             Already have an account? <Link to="/login" className="text-teal-600 font-semibold hover:text-teal-700">Sign In</Link>
           </p>
+
+
         </div>
       </div>
     </div>
