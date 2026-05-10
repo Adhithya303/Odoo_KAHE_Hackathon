@@ -29,7 +29,14 @@ export default function LandingPage() {
       {/* Hero */}
       <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920" alt="Travel" className="w-full h-full object-cover" />
+          <video 
+            src="/download.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
