@@ -64,7 +64,21 @@ async def predict(trip_id: int, req: BudgetPredictRequest, user: User = Depends(
 def add_item(trip_id: int, req: ExpenseCreate, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     trip = db.query(Trip).filter(Trip.id == trip_id, Trip.user_id == user.id).first()
     if not trip: raise HTTPException(404, "Trip not found")
-    expense = Expense(trip_id=trip_id, **req.model_dump())
+    
+    category_id = req.category_id
+    if not category_id and req.category_name:
+        from app.models.budget import ExpenseCategory
+        cat = db.query(ExpenseCategory).filter(ExpenseCategory.name == req.category_name).first()
+        if not cat:
+            cat = ExpenseCategory(name=req.category_name)
+            db.add(cat); db.commit(); db.refresh(cat)
+        category_id = cat.id
+        
+    if not category_id:
+        raise HTTPException(400, "Category is required")
+        
+    data = req.model_dump(exclude={"category_name", "category_id"})
+    expense = Expense(trip_id=trip_id, category_id=category_id, **data)
     db.add(expense); db.commit(); db.refresh(expense)
     return {"id": expense.id, "message": "Item added"}
 

@@ -5,7 +5,8 @@ from datetime import date
 
 
 class ExpenseCreate(BaseModel):
-    category_id: int
+    category_id: Optional[int] = None
+    category_name: Optional[str] = None
     description: str = Field(..., min_length=1)
     qty: float = 1.0
     unit: Optional[str] = None

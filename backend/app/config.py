@@ -6,7 +6,7 @@ load_dotenv()
 
 
 class Settings:
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "mysql+pymysql://root:password@localhost:3306/traveloop")
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "mysql+pymysql://root:redwolf_8324@localhost:3306/traveloop")
     SECRET_KEY: str = os.getenv("SECRET_KEY", "dev-secret-key")
     REFRESH_SECRET_KEY: str = os.getenv("REFRESH_SECRET_KEY", "dev-refresh-secret")
     ALGORITHM: str = os.getenv("ALGORITHM", "HS256")

@@ -42,11 +42,10 @@ function AddExpenseModal({ tripId, onClose, onAdded }) {
     setLoading(true);
     try {
       await addBudgetItem(tripId, {
-        category: form.category,
+        category_name: form.category,
         description: form.description,
-        quantity: Number(form.qty),
+        qty: Number(form.qty),
         unit_cost: Number(form.unit_cost),
-        amount: Number(form.qty) * Number(form.unit_cost),
       });
       toast.success('Expense added!');
       onAdded();
@@ -128,7 +127,7 @@ export default function BudgetBreakdownPage() {
   const summary = rawBudget?.summary || rawBudget || {};
   const items = rawBudget?.items || [];
 
-  const totalBudget = summary.total_budget || trip?.total_budget || 0;
+  const totalBudget = trip?.total_budget || summary.total_budget || 0;
   const totalSpent = summary.total_spent || 0;
   const remaining = summary.remaining ?? (totalBudget - totalSpent);
   const isOverBudget = totalSpent > totalBudget;
