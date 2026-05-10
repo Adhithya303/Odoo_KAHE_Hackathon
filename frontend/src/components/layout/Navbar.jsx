@@ -10,8 +10,8 @@ export default function Navbar() {
   const location = useLocation();
 
   const navLinks = isAuthenticated
-    ? [{ to: '/dashboard', label: 'Dashboard' }, { to: '/discover', label: 'Discover' }, { to: '/trips', label: 'My Trips' }, { to: '/tips', label: 'Tips' }]
-    : [{ to: '/', label: 'Home' }, { to: '/discover', label: 'Discover' }, { to: '/tips', label: 'Tips' }];
+    ? [{ to: '/dashboard', label: 'Dashboard' }, { to: '/discover', label: 'Discover' }, { to: '/explore', label: 'Explore' }, { to: '/trips', label: 'My Trips' }, { to: '/tips', label: 'Tips' }]
+    : [{ to: '/', label: 'Home' }, { to: '/discover', label: 'Discover' }, { to: '/explore', label: 'Explore' }, { to: '/tips', label: 'Tips' }];
 
   const isActive = (path) => location.pathname === path;
 

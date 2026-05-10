@@ -195,6 +195,12 @@ export default function TripDetailPage() {
                     </div>
                   </div>
                 </div>
+                <Link
+                  to={`/trips/${id}/budget`}
+                  className="block w-full text-center bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-card transition-colors text-sm"
+                >
+                  📊 View Full Budget Details
+                </Link>
               </div>
             </div>
           )}

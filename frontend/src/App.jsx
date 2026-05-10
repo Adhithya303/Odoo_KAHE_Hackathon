@@ -27,6 +27,8 @@ import InternationalTrendsPage from './pages/InternationalTrendsPage';
 import DestinationsPage from './pages/DestinationsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
+import ExploreSearchPage from './pages/ExploreSearchPage';
+import BudgetBreakdownPage from './pages/BudgetBreakdownPage';
 
 const qc = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 5 * 60 * 1000 } } });
 
@@ -96,11 +98,14 @@ export default function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms" element={<TermsPage />} />
 
+            <Route path="/explore" element={<ExploreSearchPage />} />
+
             {/* Protected pages */}
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/trips" element={<MyTripsPage />} />
               <Route path="/trips/:id" element={<TripDetailPage />} />
+              <Route path="/trips/:id/budget" element={<BudgetBreakdownPage />} />
               <Route path="/profile" element={<ProfilePage />} />
             </Route>
           </Route>

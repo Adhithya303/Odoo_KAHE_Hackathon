@@ -65,12 +65,17 @@ class TripNote(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     trip_id = Column(Integer, ForeignKey("trips.id", ondelete="CASCADE"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True)
     stop_id = Column(Integer, ForeignKey("trip_stops.id", ondelete="SET NULL"), nullable=True)
     title = Column(String(255), nullable=True)
     content = Column(Text, nullable=False)
+    note_type = Column(String(50), default="general")
     note_date = Column(Date, nullable=True)
-    tag = Column(Enum("general", "hotel", "reminder", "contact", "transport"), default="general")
+    day_number = Column(Integer, nullable=True)
+    stop_tag = Column(String(100), nullable=True)
+    is_pinned = Column(Boolean, default=False)
     created_at = Column(DateTime, nullable=False, server_default=func.now())
     updated_at = Column(DateTime, nullable=False, server_default=func.now(), onupdate=func.now())
 
     trip = relationship("Trip", back_populates="notes")
+
