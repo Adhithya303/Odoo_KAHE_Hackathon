@@ -1,0 +1,11 @@
+import api from './client';
+export const listTrips = (params) => api.get('/api/trips', { params });
+export const createTrip = (data) => api.post('/api/trips', data);
+export const getTrip = (id) => api.get(`/api/trips/${id}`);
+export const updateTrip = (id, data) => api.put(`/api/trips/${id}`, data);
+export const deleteTrip = (id) => api.delete(`/api/trips/${id}`);
+export const duplicateTrip = (id) => api.post(`/api/trips/${id}/duplicate`);
+export const getItinerary = (id) => api.get(`/api/trips/${id}/itinerary`);
+export const generateItinerary = (id, data) => api.post(`/api/trips/${id}/itinerary/generate`, data);
+export const addActivity = (id, data) => api.post(`/api/trips/${id}/itinerary/activities`, data);
+export const reorderActivities = (id, data) => api.put(`/api/trips/${id}/itinerary/reorder`, data);
