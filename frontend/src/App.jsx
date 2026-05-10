@@ -16,6 +16,8 @@ import MyTripsPage from './pages/MyTripsPage';
 import TripDetailPage from './pages/TripDetailPage';
 import TravelTipsPage from './pages/TravelTipsPage';
 import ProfilePage from './pages/ProfilePage';
+import ExperienceDetailPage from './pages/ExperienceDetailPage';
+import ContinentPage from './pages/ContinentPage';
 import AboutPage from './pages/AboutPage';
 import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
@@ -82,6 +84,8 @@ export default function App() {
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/destinations/:id" element={<DestinationDetailPage />} />
             <Route path="/tips" element={<TravelTipsPage />} />
+            <Route path="/experiences/:slug" element={<ExperienceDetailPage />} />
+            <Route path="/continents/:slug" element={<ContinentPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/contact" element={<ContactPage />} />
