@@ -16,6 +16,15 @@ import MyTripsPage from './pages/MyTripsPage';
 import TripDetailPage from './pages/TripDetailPage';
 import TravelTipsPage from './pages/TravelTipsPage';
 import ProfilePage from './pages/ProfilePage';
+import AboutPage from './pages/AboutPage';
+import FaqPage from './pages/FaqPage';
+import ContactPage from './pages/ContactPage';
+import TrendsPage from './pages/TrendsPage';
+import DomesticTrendsPage from './pages/DomesticTrendsPage';
+import InternationalTrendsPage from './pages/InternationalTrendsPage';
+import DestinationsPage from './pages/DestinationsPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
 
 const qc = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 5 * 60 * 1000 } } });
 
@@ -73,6 +82,15 @@ export default function App() {
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/destinations/:id" element={<DestinationDetailPage />} />
             <Route path="/tips" element={<TravelTipsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/trends" element={<TrendsPage />} />
+            <Route path="/trends/domestic" element={<DomesticTrendsPage />} />
+            <Route path="/trends/international" element={<InternationalTrendsPage />} />
+            <Route path="/destinations" element={<DestinationsPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
 
             {/* Protected pages */}
             <Route element={<ProtectedRoute />}>
