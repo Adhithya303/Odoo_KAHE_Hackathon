@@ -31,7 +31,7 @@ export default function DestinationDetailPage() {
   if (!dest) return <div className="min-h-screen flex items-center justify-center bg-sand"><p>Destination not found</p></div>;
 
   const image = dest.cover_image_url || getDestImage(dest.name);
-  const tabs = ['overview', 'activities', 'budget', 'tips'];
+  const tabs = ['overview', 'activities', 'packages', 'budget', 'tips'];
 
   return (
     <div className="min-h-screen bg-sand">
@@ -104,6 +104,39 @@ export default function DestinationDetailPage() {
               </div>
             )}
 
+            {tab === 'packages' && (
+              <div className="space-y-6">
+                <div className="bg-white rounded-card shadow-card p-8 text-center">
+                  <h2 className="font-display text-2xl font-semibold mb-2">Curated Packages for {dest.name}</h2>
+                  <p className="text-muted text-sm max-w-lg mx-auto">Choose from our pre-designed itineraries or customize them further to match your style.</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    { name: 'Essential', price: dest.avg_min_budget || 4999, icon: '🌟', color: 'blue', features: ['Standard Accommodation', 'Daily Breakfast', 'Key Landmarks Tour', 'Public Transport Guide'] },
+                    { name: 'Comfort', price: ((dest.avg_min_budget + dest.avg_max_budget) / 2) || 9999, icon: '💎', color: 'purple', features: ['4-Star Stay', 'Half Board Meals', 'Private Sightseeing', 'Airport Transfers'] },
+                    { name: 'Premium', price: dest.avg_max_budget || 14999, icon: '👑', color: 'amber', features: ['Luxury Resort Stay', 'All Inclusive Meals', 'Exclusive Experiences', 'Private SUV & Guide'] }
+                  ].map((pkg, i) => (
+                    <div key={i} className="bg-white rounded-card shadow-card p-6 flex flex-col border-2 border-transparent hover:border-primary/20 transition-all">
+                      <div className="text-3xl mb-4">{pkg.icon}</div>
+                      <h3 className="font-bold text-xl text-body mb-2">{pkg.name}</h3>
+                      <div className="text-2xl font-black text-primary mb-6">{formatCurrency(pkg.price)}<span className="text-xs text-muted font-normal">/person</span></div>
+                      <ul className="space-y-3 mb-8 flex-1">
+                        {pkg.features.map((f, j) => (
+                          <li key={j} className="flex items-start gap-2 text-sm text-muted">
+                            <span className="text-green-500 mt-0.5">✓</span>
+                            <span>{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Link to="/trips">
+                        <Button variant={i === 1 ? 'primary' : 'ghost'} className="w-full text-sm">Choose {pkg.name}</Button>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             {tab === 'budget' && (
               <div className="bg-white rounded-card shadow-card p-8">
                 <h2 className="font-display text-2xl font-semibold mb-6">Budget Estimate</h2>

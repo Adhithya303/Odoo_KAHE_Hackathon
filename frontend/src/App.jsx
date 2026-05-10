@@ -16,6 +16,28 @@ import MyTripsPage from './pages/MyTripsPage';
 import TripDetailPage from './pages/TripDetailPage';
 import TravelTipsPage from './pages/TravelTipsPage';
 import ProfilePage from './pages/ProfilePage';
+import ExperienceDetailPage from './pages/ExperienceDetailPage';
+import ContinentPage from './pages/ContinentPage';
+import AboutPage from './pages/AboutPage';
+import FaqPage from './pages/FaqPage';
+import ContactPage from './pages/ContactPage';
+import TrendsPage from './pages/TrendsPage';
+import DomesticTrendsPage from './pages/DomesticTrendsPage';
+import InternationalTrendsPage from './pages/InternationalTrendsPage';
+import DestinationsPage from './pages/DestinationsPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
+import BlogsPage from './pages/BlogsPage';
+import BlogDetailPage from './pages/BlogDetailPage';
+import CreateTripPage from './pages/CreateTripPage';
+import ItineraryBuilderPage from './pages/ItineraryBuilderPage';
+import ExploreSearchPage from './pages/ExploreSearchPage';
+import BudgetBreakdownPage from './pages/BudgetBreakdownPage';
+import TripNotesPage from './pages/TripNotesPage';
+import PackingChecklistPage from './pages/PackingChecklistPage';
+import SharedItineraryPage from './pages/SharedItineraryPage';
+import ActivitySearchPage from './pages/ActivitySearchPage';
+import AdminDashboardPage from './pages/AdminDashboardPage';
 
 const qc = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 5 * 60 * 1000 } } });
 
@@ -73,13 +95,35 @@ export default function App() {
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/destinations/:id" element={<DestinationDetailPage />} />
             <Route path="/tips" element={<TravelTipsPage />} />
+            <Route path="/experiences/:slug" element={<ExperienceDetailPage />} />
+            <Route path="/continents/:slug" element={<ContinentPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/trends" element={<TrendsPage />} />
+            <Route path="/trends/domestic" element={<DomesticTrendsPage />} />
+            <Route path="/trends/international" element={<InternationalTrendsPage />} />
+            <Route path="/destinations" element={<DestinationsPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/blogs" element={<BlogsPage />} />
+            <Route path="/blogs/:slug" element={<BlogDetailPage />} />
+            <Route path="/explore" element={<ExploreSearchPage />} />
+            <Route path="/activities" element={<ActivitySearchPage />} />
+            <Route path="/share/:tripId" element={<SharedItineraryPage />} />
 
             {/* Protected pages */}
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/trips" element={<MyTripsPage />} />
+              <Route path="/trips/create" element={<CreateTripPage />} />
               <Route path="/trips/:id" element={<TripDetailPage />} />
+              <Route path="/trips/:id/build" element={<ItineraryBuilderPage />} />
+              <Route path="/trips/:id/budget" element={<BudgetBreakdownPage />} />
+              <Route path="/trips/:id/notes" element={<TripNotesPage />} />
+              <Route path="/trips/:id/checklist" element={<PackingChecklistPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/admin" element={<AdminDashboardPage />} />
             </Route>
           </Route>
 
